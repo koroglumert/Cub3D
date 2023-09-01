@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:49:21 by havyilma          #+#    #+#             */
-/*   Updated: 2023/08/30 02:40:07 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/01 15:54:42 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@ int	check_map_name(char *av1)
 
 int	check_if_them_full(t_map *map)
 {
-/*
-	printf("n:[%s]   s:[%s]  w:[%s]  e:[%s]\nrgb_c[%d] rgb_c[%d] rgb_c[%d] rgb_f[%d] rgb_f[%d] rgb_f[%d]\n", 
-	map->north_text, map->south_text, map->west_text, map->east_text, map->rgb_c[0], map->rgb_c[1], map->rgb_c[2], map->rgb_f[0], map->rgb_f[1], map->rgb_f[2]);
-*/
 	if (map->north_text == NULL 
 		|| map->south_text == NULL
 		|| map->west_text == NULL
@@ -49,6 +45,8 @@ int	textures(char *path, t_map *map)
 
 	i = 0;
 	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		return (1);
 	tmp = get_next_line(fd);
 	if (!tmp)
 		return (1);
@@ -60,6 +58,8 @@ int	textures(char *path, t_map *map)
 			map->map_p = ft_strdup(tmp);
 			free (tmp);
 			tmp = get_next_line(fd);
+			if (!tmp)
+				return (1);
 			while (tmp && tmp[0] != '\n')
 			{
 				tmp_2 = ft_strjoin(map->map_p, tmp);
@@ -68,8 +68,8 @@ int	textures(char *path, t_map *map)
 				free (tmp);
 				tmp = get_next_line (fd);
 			}
-			if (tmp)  // altta ayrı harita için
-				return(1);
+		//	if (tmp)  // altta ayrı harita için
+		//		return(1);
 			return (i);
 		}
 		if (tmp[0] != '\n' && take_texts(tmp, map, 0, 1))
@@ -103,10 +103,7 @@ int	check_texts_rgb(t_map *map, char *av1)
 		return (1);
 	}
 	else if (map_starter > 6)
-	{
-		printf("I m full\n");
 		return (0);
-	}
 	else // map_starter 2 3 4 veya > 6
 	{
 		return (1);

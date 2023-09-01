@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:24:37 by havyilma          #+#    #+#             */
-/*   Updated: 2023/08/30 14:07:55 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/01 15:57:05 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	valid_char(char *str)
 	flag = 0;
 	while(str[i])
 	{
-		printf("+++ %c\n", str[i]);
 		if (str[i] == 'N' || str[i] == 'W' || str[i] == 'E' || str[i] == 'S')
 			flag += 1;
 		if (!(str[i] == '0' || str[i] == '1' || str[i] == ' '
@@ -31,13 +30,13 @@ int	valid_char(char *str)
 			printf ("Wrong input!\n");
 			return (1);
 		}
-		if (flag != 1)
-		{
-			printf ("Too many places to born!\n");
-			return (1);
-		}
 		i++;
 		
+	}
+	if (flag != 1)
+	{
+		printf ("Too many places to born!\n");
+		return (1);
 	}
 	return (0);
 }
@@ -58,6 +57,7 @@ int	create_map_dp(t_map *map)
 	map->map = malloc(sizeof(char *) * (length + 1));
 	i = -1;
 	j = 0;
+	map->map[i] = NULL;
 	while (++i < length)
 	{
 		start = j;
@@ -67,25 +67,47 @@ int	create_map_dp(t_map *map)
 		if(map->map_p[j] == '\n')
 			j++;
 	}
-	map->map[i] = NULL;
 	return(0);
 }
-/*
-int	is_map_valid(t_map *map)
+
+int	check_zero(char **map, int i, int j, t_map *m)
+{
+	if(i == 0 || j == 0 || (i + 1 == m->map_length) || (j + 1 == ft_strlen(map[i])))
+		return (1);
+	if (j + 1 > ft_strlen(map[i - 1]))
+		return (1);
+	if (map[i + 1] && (j + 1 > ft_strlen(map[i + 1])))
+		return (1);
+	if (map[i + 1][j] == 32 || map[i - 1][j] == 32 
+		|| map[i][j - 1] == 32 || map[i][j + 1] == 32)
+		return (1);
+	return (0);
+}
+
+int	valid_map(t_map *map)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	while (i < map->length)
+	while (i < map->map_length)
 	{
-		if (map->map[0][j] != '1')
+		j = 0;
+		while (map->map[i][j])
 		{
-			printf("Map is not covered by walls!\n");
-			return (1);
+			if (map->map[i][j] == 48)
+			{
+				if (check_zero(map->map, i, j, map))
+				{
+					printf("Wrong map!\n");
+					return(1);
+				}
+			}
+			j++;
 		}
-	}	
-		
+		i++;
+	}
+	return (0);	
 }
-*/
+

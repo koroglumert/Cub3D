@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:49:53 by havyilma          #+#    #+#             */
-/*   Updated: 2023/08/30 14:05:48 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/01 15:55:06 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,12 @@ int main(int ac, char **av)
 		ft_free_str(&map);
 		return(1);
 	}
-	if (create_map_dp(&map) || valid_char((&map)->map_p))
+	if (create_map_dp(&map) || valid_char((&map)->map_p) || valid_map(&map))
+	{
+		//	ft_free_str(&map);
 		return(1);
+	}
+
 	
+	return (0);
 }
