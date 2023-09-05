@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:49:53 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/01 15:55:06 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/05 21:19:41 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,21 @@
 
 int main(int ac, char **av)
 {
-	t_map map;
+	t_setting set;
 	
 	if (ac != 2)
 	{
 		printf("Wrong argument count!\n");
 		return (1);
 	}
-	if (check_texts_rgb(&map, av[1]))
-	{
-		ft_free_str(&map);
-		return(1);
-	}
-	if (create_map_dp(&map) || valid_char((&map)->map_p) || valid_map(&map))
-	{
-		//	ft_free_str(&map);
-		return(1);
-	}
+	ft_init(&set);
+	if (check_texts_rgb(set.map, av[1]))
+		return (ft_free_str(&set));
+	if (create_map_dp(set.map) || valid_char((set.map)->map_p) || valid_map(set.map))
+		return (ft_free_str(&set));
+	start_mlx(&set);
+	// ray casting
 
-	
+	ft_mlx(set);
 	return (0);
 }

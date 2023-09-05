@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:15:30 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/01 16:05:06 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/05 21:24:01 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,26 @@ typedef struct	s_map
 typedef struct s_mlx
 {
 	void	*mlx_init;
-	void	*mlx_img;
+	void	*img_n;
+	void	*img_e;
+	void	*img_s;
+	void	*img_w;
 	int		*mlx_img_addr;
 	void	*mlx_window;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
 }				t_mlx;
 
-void	ft_init(t_map *map);
-void	ft_free_str(t_map *map);
+typedef struct	s_setting
+{
+	t_map	*map;
+	t_mlx	*mlx;
+	
+}				t_setting;
+
+void	ft_init(t_setting *set);
+int		ft_free_str(t_setting *set)
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_atoi(const char *str);
@@ -57,6 +70,7 @@ int		take_texts(char *str, t_map *map, int i, int flg);
 int		create_map_dp(t_map *map);
 int		valid_char(char *str);
 int		valid_map(t_map *map);
+void	start_mlx(t_setting *set);
 
 #endif
 

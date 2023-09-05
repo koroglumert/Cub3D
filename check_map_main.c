@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:49:21 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/01 15:54:42 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/05 19:37:26 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ int	check_texts_rgb(t_map *map, char *av1)
 		printf("Wrong filename!\n");
 		return (1);
 	}
-	ft_init(map);
 	map_starter = textures(av1, map);
 	if (map_starter == 1)
 	{
