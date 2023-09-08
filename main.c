@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:49:53 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/05 21:19:41 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/08 05:20:52 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ int main(int ac, char **av)
 		return (ft_free_str(&set));
 	if (create_map_dp(set.map) || valid_char((set.map)->map_p) || valid_map(set.map))
 		return (ft_free_str(&set));
+	set.map->win_i = 600;
+	set.map->win_j = 800;
 	start_mlx(&set);
 	// ray casting
 
-	ft_mlx(set);
+//	ft_mlx(set);
 	return (0);
 }

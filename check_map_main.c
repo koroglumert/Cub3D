@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:49:21 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/05 19:37:26 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/08 05:19:52 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,21 +68,17 @@ int	textures(char *path, t_map *map)
 				free (tmp);
 				tmp = get_next_line (fd);
 			}
-		//	if (tmp)  // altta ayrı harita için
-		//		return(1);
 			return (i);
 		}
-		if (tmp[0] != '\n' && take_texts(tmp, map, 0, 1))
+		if (tmp[0] != '\n' && take_texts(tmp, map, 0 ,0))
 		{
-			free (tmp);
+			free(tmp);
 			return (1);
 		}
 		free (tmp);
 		tmp = get_next_line(fd);
 	}
 	close(fd);
-	if (check_if_them_full(map))
-		return (1);
 	return (i);
 }
 
@@ -101,11 +97,8 @@ int	check_texts_rgb(t_map *map, char *av1)
 		printf("Map includes wrong, missing or extra characters!\n");
 		return (1);
 	}
-	else if (map_starter > 6)
-		return (0);
-	else // map_starter 2 3 4 veya > 6
-	{
-		return (1);
-	}
+			printf("%s\n", map->north_text);
+//	else // map_starter 2 3 4 veya > 6
+
 	return (0);
 }

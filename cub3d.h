@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:15:30 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/05 21:24:01 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/08 05:46:56 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,30 +21,71 @@
 #include <fcntl.h>
 #include <stdio.h>
 
+typedef struct	s_img
+{
+	void	*window;
+	int		*image;
+	char	*data;
+	int		bpp; 
+	int		sizeline;
+	int		endian; 	
+}				t_img;
+
+typedef struct s_texture{
+	void	*image;
+	char	*path;
+	char	*data;
+	int		use;
+	int		w;
+	int		h;
+	int		bpp;
+	int		sizeline;
+	int		endian;
+}			t_texture;
+
+typedef struct	s_player{
+	double	x;
+	double	y;
+	double	dir_x;
+	double	dir_y;
+	double	speed;
+	double	rot_speed;
+	double	plane_x;
+	double	plane_y;
+}				t_player;
+
 typedef struct	s_map
 {
-	char	*north_text;
-	char	*south_text;
-	char	*west_text;
-	char	*east_text;
-	char	*map_p;
-	char	**map;
-	int		ply_x;
-	int		ply_y;
-	int		map_length;
-	int		*rgb_c;
-	int		*rgb_f;
-	int		rgb_control;
+	char		*north_text;
+	char		*south_text;
+	char		*west_text;
+	char		*east_text;
+	char		*map_p;
+	char		**map;
+	int			ply_x;
+	int			ply_y;
+	int			map_length;
+	int			*rgb_c;
+	int			*rgb_f;
+	int			rgb_ceiling;
+	int			rgb_floor;
+	int			rgb_control;
+	t_texture	*north;
+	t_texture	*south;
+	t_texture	*west;
+	t_texture	*east;
+	int			img_h;
+	int			img_w;
+	t_img		img;
+	int			win_j;
+	int			win_i;
 }				t_map;
 
 typedef struct s_mlx
 {
 	void	*mlx_init;
-	void	*img_n;
-	void	*img_e;
-	void	*img_s;
-	void	*img_w;
-	int		*mlx_img_addr;
+	void	*mlx_img;
+	char	*mlx_img_addr;
 	void	*mlx_window;
 	int		bits_per_pixel;
 	int		size_line;
@@ -53,14 +94,21 @@ typedef struct s_mlx
 
 typedef struct	s_setting
 {
-	t_map	*map;
-	t_mlx	*mlx;
-	
+	t_map		*map;
+	t_mlx		*mlx;
+	t_player	*player;
+	double		move_speed;
+	double		rot_speed;
+	int			press_w;
+	int			press_a;
+	int			press_s;
+	int			press_d;
+	int			direct_right;
+	int			direct_left;
 }				t_setting;
 
 void	ft_init(t_setting *set);
-int		ft_free_str(t_setting *set)
-
+int		ft_free_str(t_setting *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_atoi(const char *str);
 char	*ft_strdup(char *s1);

@@ -1,16 +1,16 @@
-EA textures/wall_4.xpm
-NO textures/wall_1.xpm
+(BU SATIRI SİL VE EĞLENCEYİ GÖR)
+NO /Users/havyilma/Desktop/cub3d/textures/wood.xpm
+SO /Users/havyilma/Desktop/cub3d/textures/colorstone.xpm
+WE /Users/havyilma/Desktop/cub3d/textures/greystone.xpm
+EA /Users/havyilma/Desktop/cub3d/textures/redbrick.xpm
 
-F 184,113,39 
-   SO textures/wall_2.xpm
-WE textures/wall_3.xpm          
-
-C    51,198,42
-
+F 250,0,0
+C    0,0,242
 
 111111111111
 10000010W001
 100100100001
 100100100001
 100100000001
+111111111111
 111111111111

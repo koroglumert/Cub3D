@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 16:43:01 by havyilma          #+#    #+#             */
-/*   Updated: 2023/08/30 02:09:13 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/08 00:31:26 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		start++;
 		len--;
 	}
-	a[i] = 0;
+	a[i] = '\0';
 	return (a);
 }
 
