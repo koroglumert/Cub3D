@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:18:48 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/07 22:59:22 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/09 17:18:50 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_init(t_setting *set)
 	set->map->rgb_f[0] = -1;
 	set->map->rgb_f[1] = -1;
 	set->map->rgb_f[2] = -1;
-	set->map->img_h = 400;
+	set->map->img_h = 300;
 	set->map->img_w = 300;
 	set->map->north = malloc(sizeof(t_texture));
 	set->map->south = malloc(sizeof(t_texture));
@@ -54,8 +54,13 @@ int	ft_free_str(t_setting *set)
 		free (set->map->rgb_c);
 	if (set->map->rgb_f)
 		free (set->map->rgb_f);
-	if (set->map)
-		free (set->map);
-//	set->mlx
 	return (1);
+}
+
+void	take_rgb_f_c(t_setting *set)
+{
+	set->map->rgb_ceiling = (set->map->rgb_c[0] << 16) 
+		+ (set->map->rgb_c[1] << 8) + set->map->rgb_c[2];
+	set->map->rgb_floor = (set->map->rgb_f[0] << 16) 
+		+ (set->map->rgb_f[1] << 8) + set->map->rgb_f[2];
 }

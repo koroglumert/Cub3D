@@ -1,16 +1,30 @@
-(BU SATIRI SİL VE EĞLENCEYİ GÖR)
-NO /Users/havyilma/Desktop/cub3d/textures/wood.xpm
+
+NO /Users/havyilma/Desktop/cub3d/textures/wood.xpm  
 SO /Users/havyilma/Desktop/cub3d/textures/colorstone.xpm
+
 WE /Users/havyilma/Desktop/cub3d/textures/greystone.xpm
+
+
 EA /Users/havyilma/Desktop/cub3d/textures/redbrick.xpm
 
 F 250,0,0
-C    0,0,242
+C    0,0,255
+
+
+
+
+
+
 
 111111111111
-10000010W001
-100100100001
-100100100001
+10000010N001111111
+100100100001000001
+100100100001111111111
 100100000001
 111111111111
 111111111111
+
+
+
+
+

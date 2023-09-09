@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:49:21 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/08 05:19:52 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/09 17:26:47 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,27 @@ int	check_map_name(char *av1)
 	return (0);
 }
 
+int	is_rgb_valid(int *c, int *f)
+{
+	int	i;
+
+	i = 0;
+	while (i <= 2)
+	{
+		if (!((c[i] >= 0 && c[i] <= 255) && (f[i] >= 0 && f[i] <= 255)))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int	check_if_them_full(t_map *map)
 {
 	if (map->north_text == NULL 
 		|| map->south_text == NULL
 		|| map->west_text == NULL
 		|| map->east_text == NULL
-		|| map->rgb_control != 2)
+		|| map->rgb_control != 2 || is_rgb_valid(map->rgb_c, map->rgb_f))
 		return (1);
 	return (0);
 }
@@ -68,11 +82,13 @@ int	textures(char *path, t_map *map)
 				free (tmp);
 				tmp = get_next_line (fd);
 			}
+			close (fd);
 			return (i);
 		}
 		if (tmp[0] != '\n' && take_texts(tmp, map, 0 ,0))
 		{
 			free(tmp);
+			close (fd);
 			return (1);
 		}
 		free (tmp);
@@ -97,7 +113,6 @@ int	check_texts_rgb(t_map *map, char *av1)
 		printf("Map includes wrong, missing or extra characters!\n");
 		return (1);
 	}
-			printf("%s\n", map->north_text);
 //	else // map_starter 2 3 4 veya > 6
 
 	return (0);

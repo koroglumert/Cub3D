@@ -1,0 +1,14 @@
+
+Bakış Yönünü Hesaplayın: Oyuncunun bakış yönünü hesaplamak için 
+oyuncunun pozisyonundan hedef noktasına doğru bir vektör oluşturun. 
+Bu vektör, oyuncunun bakış yönünü temsil eder. Bu vektörü NDC koordinatlarına dönüştürebilirsiniz, 
+ancak bu hesaplamayı yapmak için dönüşüm matrislerine ihtiyacınız olabilir.
+
+Yönü Kontrol Edin: Elde ettiğiniz bakış yönü vektörünün bileşenlerini 
+kontrol ederek, oyuncunun hangi yöne baktığını belirleyebilirsiniz. 
+Örneğin, bakış yönü vektörünün x bileşeni pozitifse, oyuncu doğuya bakıyor demektir. 
+Yönlerin NDC koordinatlarındaki karşılıklarını dikkate alarak bu kontrolü yapabilirsiniz.
+
+/* mlx_loop_hook ile ilgili bilgi:Örneğin, eğer bir uygulama 60 FPS (Frame Per Second) ile çalışıyorsa, 
+mlx_loop_hook ile belirtilen işlev her saniyede 60 kez çağrılacaktır. Bu, düzenli bir animasyon veya 
+grafik güncellemesi için uygun bir hızdır. Ancak, bu hız uygulama ve donanım özelliklerine göre değişebilir. (YUHHH)*/

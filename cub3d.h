@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:15:30 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/08 05:46:56 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/10 02:37:54 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,31 @@ typedef struct s_texture{
 }			t_texture;
 
 typedef struct	s_player{
-	double	x;
-	double	y;
-	double	dir_x;
-	double	dir_y;
-	double	speed;
-	double	rot_speed;
-	double	plane_x;
-	double	plane_y;
+	double		x;
+	double		y;
+	double		dir_x;
+	double		dir_y;
+	double		speed;
+	double		rot_speed;
+	double		plane_x;
+	double		plane_y;
+	int			ply_i;
+	int			ply_j;
+	double		camera_x;
+	double		camera_y;
+	double		raydir_x;
+	double		raydir_y;
+	double		deltadist_x;
+	double		deltadist_y;
+	double		sidedist_x;
+	double		sidedist_y;
+	int			move_x;
+	int			move_y;
+	int			face_of_cube;
+	int			distance;
+	int			wall_height;
+	int			beginning_of_the_walls;
+	int			end_of_the_walls;
 }				t_player;
 
 typedef struct	s_map
@@ -62,13 +79,11 @@ typedef struct	s_map
 	char		*east_text;
 	char		*map_p;
 	char		**map;
-	int			ply_x;
-	int			ply_y;
 	int			map_length;
 	int			*rgb_c;
 	int			*rgb_f;
-	int			rgb_ceiling;
-	int			rgb_floor;
+	long long int			rgb_ceiling;
+	long long int			rgb_floor;
 	int			rgb_control;
 	t_texture	*north;
 	t_texture	*south;
@@ -118,7 +133,18 @@ int		take_texts(char *str, t_map *map, int i, int flg);
 int		create_map_dp(t_map *map);
 int		valid_char(char *str);
 int		valid_map(t_map *map);
+int		where_am_i(t_setting *set, char **str);
 void	start_mlx(t_setting *set);
+void	take_rgb_f_c(t_setting *set);
+void	xpm_controller(t_map *map);
+int		close_win(t_setting *set);
+void	player_coordinate (t_setting *set);
+void	paint_cloud_and_grass(t_setting *set);
+void	put_images(t_setting *set);
+int		press_key (int	keycode, t_setting *set);
+int		release_key(int keycode, t_setting *set);
+int		take_first_directs(t_setting *set);
+int		take_first_plane_coor(t_setting *set);
 
 #endif
 
