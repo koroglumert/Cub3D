@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:54:02 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/09 17:18:22 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/10 10:58:14 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	my_screen(t_setting *set)
 	set->mlx->mlx_img_addr = mlx_get_data_addr(set->mlx->mlx_img, 
 		&set->mlx->bits_per_pixel, &set->mlx->size_line, &set->mlx->endian);
 	paint_cloud_and_grass(set);
+	ray_casting(set);
 	return (0);
 }
-
 
 void	start_mlx(t_setting *set)
 {

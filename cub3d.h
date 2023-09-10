@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:15:30 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/10 02:37:54 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/10 11:52:21 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 #include <fcntl.h>
 #include <stdio.h>
 
+# define	TEXT_W 64
+# define	TEXT_H 64
+# define 	WIDTH	800
+# define	HEIGHT 600
 typedef struct	s_img
 {
 	void	*window;
@@ -28,9 +32,11 @@ typedef struct	s_img
 	char	*data;
 	int		bpp; 
 	int		sizeline;
-	int		endian; 	
+	int		endian;
+	int		img_h;
+	int		img_w;
 }				t_img;
-
+/*
 typedef struct s_texture{
 	void	*image;
 	char	*path;
@@ -42,7 +48,7 @@ typedef struct s_texture{
 	int		sizeline;
 	int		endian;
 }			t_texture;
-
+*/
 typedef struct	s_player{
 	double		x;
 	double		y;
@@ -69,34 +75,39 @@ typedef struct	s_player{
 	int			wall_height;
 	int			beginning_of_the_walls;
 	int			end_of_the_walls;
+	int			wall_x;
+	int			wall_y;
+	int			text_x;
+	int			text_pos;
+	int			text_step;
 }				t_player;
 
-typedef struct	s_map
+typedef struct		s_map
 {
-	char		*north_text;
-	char		*south_text;
-	char		*west_text;
-	char		*east_text;
-	char		*map_p;
-	char		**map;
-	int			map_length;
-	int			*rgb_c;
-	int			*rgb_f;
-	long long int			rgb_ceiling;
-	long long int			rgb_floor;
-	int			rgb_control;
-	t_texture	*north;
-	t_texture	*south;
-	t_texture	*west;
-	t_texture	*east;
-	int			img_h;
-	int			img_w;
-	t_img		img;
-	int			win_j;
-	int			win_i;
-}				t_map;
+	char			*north_text;
+	char			*south_text;
+	char			*west_text;
+	char			*east_text;
+	char			*map_p;
+	char			**map;
+	int				map_length;
+	int				*rgb_c;
+	int				*rgb_f;
+	long long int	rgb_ceiling;
+	long long int	rgb_floor;
+	int				rgb_control;
+	t_img			*north;
+	t_img			*south;
+	t_img			*west;
+	t_img			*east;
+	int				img_h;
+	int				img_w;
+	t_img			img;
+	int				win_j;
+	int				win_i;
+}					t_map;
 
-typedef struct s_mlx
+typedef struct	s_mlx
 {
 	void	*mlx_init;
 	void	*mlx_img;
@@ -145,6 +156,10 @@ int		press_key (int	keycode, t_setting *set);
 int		release_key(int keycode, t_setting *set);
 int		take_first_directs(t_setting *set);
 int		take_first_plane_coor(t_setting *set);
+void	ray_casting (t_setting *set);
+void	oh_my_walls(t_setting *set);
+void	get_images(t_setting *set, int j);
+
 
 #endif
 

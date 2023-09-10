@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:53:34 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/10 02:39:34 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/10 11:52:00 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,27 +94,12 @@ void	dda(t_setting *set)
 	}
 }
 
-void	oh_my_walls(t_setting *set)
-{
-	if (set->player->face_of_cube == 'x')
-		set->player->distance = set->player->sidedist_x - set->player->deltadist_x;
-	else
-		set->player->distance = set->player->sidedist_y - set->player->deltadist_y;   //dik uzaklık olmadı bence bunlar ama neyse
-	set->player->wall_height = (int)set->map->win_i / set->player->distance;
-	set->player->beginning_of_the_walls = set->map->win_i / 2 - set->player->wall_height / 2;
-	if (set->player->beginning_of_the_walls < 0)  // duvara çok yakın (dibinde) olma ihtimalimiz
-		set->player->beginning_of_the_walls = 0;
-	set->player->end_of_the_walls = set->map->win_i / 2 + set->player->wall_height / 2;
-	if (set->player->beginning_of_the_walls >= set->map->win_i)  // duvara çok yakın (dibinde) olma ihtimalimiz
-		set->player->beginning_of_the_walls = set->map->win_i - 1;
-}
-
 void	ray_casting (t_setting *set)
 {
 	int	j;
 
 	j = 0;
-	while (j < set->map->win_j)
+	while (j < WIDTH)
 	{
 		set->player->camera_x = 2 * j / (double)set->map->win_j - 1;
 		set->player->raydir_x = set->player->dir_x + set->player->plane_x * set->player->camera_x;
@@ -126,5 +111,7 @@ void	ray_casting (t_setting *set)
 		take_step_and_sidedist(set);
 		dda(set);
 		oh_my_walls(set);
+		get_images(set, j);
+		j++;
 	}
 }

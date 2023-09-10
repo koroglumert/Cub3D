@@ -6,7 +6,7 @@
 #    By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 19:51:14 by havyilma          #+#    #+#              #
-#    Updated: 2023/09/09 17:14:48 by havyilma         ###   ########.fr        #
+#    Updated: 2023/09/10 11:16:20 by havyilma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ MLX = minilibx/mlx.a
 GNL = get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c
 GNLOBJS = $(GNL:.c=.o)
 SRCS = libft.c main.c check_map_main.c utils.c check_map_textures.c check_valid_map.c xpm.c mlx_utils.c\
-		press_keys.c ray_casting.c directs_and_plane.c
+		press_keys.c ray_casting.c directs_and_plane.c walls_and_roses.c
 OBJS = $(SRCS:.c=.o)
 NAME = cub3d
 
