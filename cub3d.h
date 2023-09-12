@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:15:30 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/12 03:55:18 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/12 13:01:43 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 
 # define	TEXT_W 64
 # define	TEXT_H 64
-# define 	WIDTH	640
-# define	HEIGHT 480
+# define 	WIDTH	1920
+# define	HEIGHT 1080
 
 
 typedef struct	s_img
@@ -75,7 +75,7 @@ typedef struct	s_player{
 	int			move_x;
 	int			move_y;
 	int			face_of_cube;
-	int			distance;
+	double		distance;
 	int			wall_height;
 	int			beginning_of_the_walls;
 	int			end_of_the_walls;
@@ -163,7 +163,7 @@ int		take_first_plane_coor(t_setting *set);
 void	ray_casting (t_setting *set);
 void	oh_my_walls(t_setting *set);
 void	get_images(t_setting *set, int j);
-
+void	check_keys(t_setting *set);
 
 #endif
 

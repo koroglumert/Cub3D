@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:10:02 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/11 21:49:44 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/12 12:03:54 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ void	go_up(t_setting *set)
 	double	spd;
 
 	spd = set->player->move_speed;
-	y = set->player->ply_j;
-	x = set->player->ply_i;
-	if (set->map->map[(int)(y + set->player->dir_x * spd)][x] == '0')
-		set->player->ply_j += set->player->dir_x * spd;
-	if (set->map->map[y][(int)(x + set->player->dir_x * spd)] == '0')
-		set->player->ply_i += set->player->dir_y * spd;
+	y = set->player->ply_i;
+	x = set->player->ply_j;
+	if (set->map->map[y + (int)(set->player->dir_x * spd)][x] == '0')
+		set->player->ply_j += (int)(set->player->dir_x * spd);
+	if (set->map->map[y][x + (int)(set->player->dir_x * spd)] == '0')
+		set->player->ply_i += (int)(set->player->dir_y * spd);
 }
 
 void	go_down(t_setting *set)
@@ -66,16 +66,30 @@ void	go_down(t_setting *set)
 	double	spd;
 
 	spd = set->player->move_speed;
-	y = set->player->ply_j;
-	x = set->player->ply_i;
+	y = set->player->ply_i;
+	x = set->player->ply_j;
 	if (set->map->map[(int)(y - set->player->dir_x * spd)][x] == '0')
-		set->player->ply_j -= set->player->dir_x * spd;
+		set->player->ply_j -= (int)(set->player->dir_x * spd);
 	if (set->map->map[y][(int)(x - set->player->dir_x * spd)] == '0')
-		set->player->ply_i -= set->player->dir_y * spd;
+		set->player->ply_i -= (int)(set->player->dir_y * spd);
 }
 
 void	eescape(t_setting *set)
 {
 	(void)set;
 	exit(0);
+}
+
+
+void	check_keys(t_setting *set)
+{
+	
+	if(set->press_w == 1)
+		go_up(set);
+	if (set->press_s == 1)
+		go_down (set);
+	if (set->direct_right == 1)
+		turn_right (set);
+	if (set->direct_left == 1)
+		turn_left (set);
 }

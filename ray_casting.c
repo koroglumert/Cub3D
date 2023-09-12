@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:54:02 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/12 03:50:22 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/12 12:25:55 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,21 @@ int	my_screen(t_setting *set)
 		&set->mlx->bits_per_pixel, &set->mlx->size_line, &set->mlx->endian);
 	paint_cloud_and_grass(set);
 	ray_casting(set);
+	check_keys(set);
 	return (0);
 }
 
 void	start_mlx(t_setting *set)
 {
+	put_images(set);
 	take_first_directs(set);
 	take_first_plane_coor(set);
-//	player_coordinate(set);  // NEDEN
-
+	player_coordinate(set);  // NEDEN
 	xpm_controller (set->map);
 	take_rgb_f_c(set);
-	put_images(set);//	printf("dirx %d    diry %d   planex %f    planey  %f    mapx %f  mapy  %f\n", set->player->ply_j, set->player->ply_i, set->player->plane_x, set->player->plane_y, set->player->x, set->player->y);
+	mlx_loop_hook(set->mlx->mlx_init, &my_screen, set);
 	mlx_hook(set->mlx->mlx_window, 2, 1L << 0, &press_key, set);
 	mlx_hook(set->mlx->mlx_window, 3, 1L << 0, &release_key, set);
-
-	mlx_loop_hook(set->mlx->mlx_init, &my_screen, set);
 	mlx_hook (set->mlx->mlx_window, 17, 0, close_win, set); // çarpı butonu için
 	mlx_loop(set->mlx->mlx_init);
 }
