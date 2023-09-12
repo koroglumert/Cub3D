@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:53:34 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/10 11:52:00 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/11 16:38:40 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	take_step_and_sidedist(t_setting *set) //benzer üçgenlerde uzunluk
 	else
 	{
 		set->player->move_x = 1;
-		set->player->sidedist_x = (set->player->x - set->player->ply_j)  // parantez içine +1 maybe
+		set->player->sidedist_x = (1 + set->player->x - set->player->ply_j)  // parantez içine +1 maybe
 			* set->player->deltadist_x;
 	}
 	if (set->player->raydir_y < 0)
@@ -114,4 +114,5 @@ void	ray_casting (t_setting *set)
 		get_images(set, j);
 		j++;
 	}
+	mlx_put_image_to_window(set->mlx->mlx_init, set->mlx->mlx_window, set->mlx->mlx_img, 0, 0);
 }

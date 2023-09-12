@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:15:30 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/10 11:52:21 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/12 03:55:18 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@
 
 # define	TEXT_W 64
 # define	TEXT_H 64
-# define 	WIDTH	800
-# define	HEIGHT 600
+# define 	WIDTH	640
+# define	HEIGHT 480
+
+
 typedef struct	s_img
 {
 	void	*window;
@@ -35,6 +37,7 @@ typedef struct	s_img
 	int		endian;
 	int		img_h;
 	int		img_w;
+	char	*content;
 }				t_img;
 /*
 typedef struct s_texture{
@@ -56,6 +59,7 @@ typedef struct	s_player{
 	double		dir_y;
 	double		speed;
 	double		rot_speed;
+	double		move_speed;
 	double		plane_x;
 	double		plane_y;
 	int			ply_i;
@@ -78,8 +82,9 @@ typedef struct	s_player{
 	int			wall_x;
 	int			wall_y;
 	int			text_x;
-	int			text_pos;
-	int			text_step;
+	int			text_y;
+	double		text_pos;
+	double		text_step;
 }				t_player;
 
 typedef struct		s_map
@@ -96,13 +101,12 @@ typedef struct		s_map
 	long long int	rgb_ceiling;
 	long long int	rgb_floor;
 	int				rgb_control;
-	t_img			*north;
-	t_img			*south;
-	t_img			*west;
-	t_img			*east;
+	t_img			north;
+	t_img			south;
+	t_img			west;
+	t_img			east;
 	int				img_h;
 	int				img_w;
-	t_img			img;
 	int				win_j;
 	int				win_i;
 }					t_map;

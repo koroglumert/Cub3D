@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:18:48 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/10 11:14:29 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/11 23:48:50 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,10 @@ void	ft_init(t_setting *set)
 	set->map->rgb_f[0] = -1;
 	set->map->rgb_f[1] = -1;
 	set->map->rgb_f[2] = -1;
-	set->map->img_h = 300;
-	set->map->img_w = 300;
-	set->map->north = malloc(sizeof(t_img));
-	set->map->south = malloc(sizeof(t_img));
-	set->map->west = malloc(sizeof(t_img));
-	set->map->east = malloc(sizeof(t_img));
+//	set->map->north = malloc(sizeof(t_img));
+//	set->map->south = malloc(sizeof(t_img));
+//	set->map->west = malloc(sizeof(t_img));
+//	set->map->east = malloc(sizeof(t_img));
 }
 
 int	ft_free_str(t_setting *set)

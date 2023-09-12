@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:50:52 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/09 16:52:38 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/11 21:48:21 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	press_key (int	keycode, t_setting *set)
 	set->move_speed = 0.05;
 	set->rot_speed = 0.05;
 	if (keycode == 13)
-		set->press_w = 1;
+		set->press_w = 1; //go right çağır
 	else if (keycode == 0)
 		set->press_a = 1;
 	else if (keycode == 1)
@@ -27,7 +27,6 @@ int	press_key (int	keycode, t_setting *set)
 	else if (keycode == 53)
 		exit (close_win(set));
 	/* 
-	----directions--- öncesine handle_direct diye fonk yazmıslar
 	else if (keycode == 124)
 		turn_right(set);
 	else if (keycode == 123)

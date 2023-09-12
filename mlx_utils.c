@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:46:23 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/09 17:27:27 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/12 03:54:44 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,30 @@ void	player_coordinate (t_setting *set)
 
 void	paint_cloud_and_grass(t_setting *set)
 {
-	int	i;
-	int	j;
+	int	x;
+	int	y;
+	char *test;
 
-	i = -1;
-	while (++i < 800)
+	x = 0;
+	while (x < WIDTH)   // 480
 	{
-		j = -1;
-		while (++j < 600)
+		y = 0;
+		while (y < HEIGHT)  // 680
 		{
-			if (j < set->map->win_j / 2)
-			{
-				set->mlx->mlx_img_addr[j * 1920 + i] 
-					= set->map->rgb_ceiling;
+			if (y < HEIGHT / 2) 
+			{	
+				test =  set->mlx->mlx_img_addr + (y * set->mlx->size_line + (x * set->mlx->bits_per_pixel / 8));
+				*(unsigned int *)test = set->map->rgb_ceiling; 
 			}
+			
 			else
 			{
-				set->mlx->mlx_img_addr[j * 1080 + i]
-					= set->map->rgb_floor;
+				test =  set->mlx->mlx_img_addr + (y * set->mlx->size_line + (x * set->mlx->bits_per_pixel / 8));
+				*(unsigned int *)test = set->map->rgb_floor; 
 			}
+			y++;
 		}
+		x++;
 	}
 }
 

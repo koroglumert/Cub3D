@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 21:04:14 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/09 16:55:16 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/12 03:35:20 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,21 @@ void	xpm_controller(t_map *map)
 void	put_images(t_setting *set)
 {
 	set->mlx->mlx_init = mlx_init();
-	set->mlx->mlx_window = mlx_new_window(set->mlx->mlx_init, 1920, 1080, "cub3d");
-	set->mlx->mlx_img = mlx_new_image(set->mlx->mlx_init, 1920, 1080);
+	set->mlx->mlx_window = mlx_new_window(set->mlx->mlx_init, set->map->win_j, set->map->win_i, "cub3d");
+	set->mlx->mlx_img = mlx_new_image(set->mlx->mlx_init, set->map->win_j, set->map->win_i);
 	set->mlx->mlx_img_addr = mlx_get_data_addr(set->mlx->mlx_img, 
 		&set->mlx->bits_per_pixel, &set->mlx->size_line, &set->mlx->endian);
-	set->map->north->image = mlx_xpm_file_to_image(set->mlx->mlx_init, set->map->north_text, &(set->map->img_w), &(set->map->img_h));
-	set->map->south->image = mlx_xpm_file_to_image(set->mlx->mlx_init, set->map->south_text, &(set->map->img_w), &(set->map->img_h));
-	set->map->west->image = mlx_xpm_file_to_image(set->mlx->mlx_init, set->map->west_text, &(set->map->img_w), &(set->map->img_h));
-	set->map->east->image = mlx_xpm_file_to_image(set->mlx->mlx_init, set->map->east_text, &(set->map->img_w), &(set->map->img_h));
-	if (!set->map->north->image || !set->map->south->image || !set->map->west->image || !set->map->east->image)
+	set->map->north.image = mlx_xpm_file_to_image(set->mlx->mlx_init, set->map->north_text, &(set->map->north.img_w), &(set->map->north.img_h));
+	set->map->south.image = mlx_xpm_file_to_image(set->mlx->mlx_init, set->map->south_text, &(set->map->south.img_w), &(set->map->south.img_h));
+	set->map->west.image = mlx_xpm_file_to_image(set->mlx->mlx_init, set->map->west_text, &(set->map->west.img_w), &(set->map->west.img_h));
+	set->map->east.image = mlx_xpm_file_to_image(set->mlx->mlx_init, set->map->east_text, &(set->map->east.img_w), &(set->map->east.img_h));
+	if (!set->map->north.image || !set->map->south.image || !set->map->west.image || !set->map->east.image)
 	{
 		printf("texture error!\n");
 		exit (1);
 	}
-	set->map->north->data = mlx_get_data_addr(set->map->north->image, &(set->map->north->bpp), &(set->map->north->sizeline), &(set->map->north->endian));
-	set->map->south->data = mlx_get_data_addr(set->map->south->image, &(set->map->south->bpp), &(set->map->south->sizeline), &(set->map->south->endian));
-	set->map->west->data = mlx_get_data_addr(set->map->west->image, &(set->map->west->bpp), &(set->map->west->sizeline), &(set->map->west->endian));
-	set->map->east->data = mlx_get_data_addr(set->map->east->image, &(set->map->east->bpp), &(set->map->east->sizeline), &(set->map->east->endian));	
+	set->map->north.data = mlx_get_data_addr(set->map->north.image, &(set->map->north.bpp), &(set->map->north.sizeline), &(set->map->north.endian));
+	set->map->south.data = mlx_get_data_addr(set->map->south.image, &(set->map->south.bpp), &(set->map->south.sizeline), &(set->map->south.endian));
+	set->map->west.data = mlx_get_data_addr(set->map->west.image, &(set->map->west.bpp), &(set->map->west.sizeline), &(set->map->west.endian));
+	set->map->east.data = mlx_get_data_addr(set->map->east.image, &(set->map->east.bpp), &(set->map->east.sizeline), &(set->map->east.endian));	
 }
