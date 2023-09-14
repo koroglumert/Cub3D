@@ -6,8 +6,8 @@ WE /Users/havyilma/Desktop/cub3d/textures/greystone.xpm
 
 EA /Users/havyilma/Desktop/cub3d/textures/redbrick.xpm
 
-F  100,0,0
-C  0,0,130
+F  0,80,0
+C  0,0,210
 
 1111111111111111111111111
 1000001000000000001111111
