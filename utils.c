@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:18:48 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/11 23:48:50 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/19 20:10:19 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	ft_init(t_setting *set)
 //	set->map->east = malloc(sizeof(t_img));
 }
 
+
+//MERT: Fİnalde gerek kalacak mı kontrol edelim.
 int	ft_free_str(t_setting *set)
 {
 	if (set->map->north_text)
@@ -55,10 +57,4 @@ int	ft_free_str(t_setting *set)
 	return (1);
 }
 
-void	take_rgb_f_c(t_setting *set)
-{
-	set->map->rgb_ceiling = (set->map->rgb_c[0] << 16) 
-		+ (set->map->rgb_c[1] << 8) + set->map->rgb_c[2];
-	set->map->rgb_floor = (set->map->rgb_f[0] << 16) 
-		+ (set->map->rgb_f[1] << 8) + set->map->rgb_f[2];
-}
+

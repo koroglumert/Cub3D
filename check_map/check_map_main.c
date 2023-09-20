@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_main.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:49:21 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/09 17:26:47 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:56:40 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-
-int	check_map_name(char *av1)
-{
-	int	i;
-
-	i = ft_strlen(av1);
-	if (i <= 4)
-		return (1);
-	i--;
-	if (!(av1[i] == 'b' && av1[i - 1] == 'u' && av1[i - 2] == 'c' && av1[i - 3] == '.'))
-		return (1);
-	return (0);
-}
+#include "../cub3d.h"
 
 int	is_rgb_valid(int *c, int *f)
 {
@@ -96,6 +83,19 @@ int	textures(char *path, t_map *map)
 	}
 	close(fd);
 	return (i);
+}
+
+int	check_map_name(char *av1)
+{
+	int	i;
+
+	i = ft_strlen(av1);
+	if (i <= 4)
+		return (1);
+	i--;
+	if (!(av1[i] == 'b' && av1[i - 1] == 'u' && av1[i - 2] == 'c' && av1[i - 3] == '.'))
+		return (1);
+	return (0);
 }
 
 int	check_texts_rgb(t_map *map, char *av1)

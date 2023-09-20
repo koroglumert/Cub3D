@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   turning_around.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:10:02 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/12 12:03:54 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/20 03:17:16 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	turn_right(t_setting *set)
+static void	turn_right(t_setting *set)
 {
 	double	old_dir_x;
 	double	old_plane_x;
@@ -28,7 +28,7 @@ void	turn_right(t_setting *set)
 	set->player->plane_y = old_plane_x * sin(-rs) + set->player->plane_y * cos(-rs);
 }
 
-void	turn_left(t_setting *set)
+static void	turn_left(t_setting *set)
 {
 	double	old_dir_x;
 	double	old_plane_x;
@@ -44,12 +44,11 @@ void	turn_left(t_setting *set)
 	set->player->plane_y = old_plane_x * sin(rs) + set->player->plane_y * cos(rs);	
 }
 
-void	go_up(t_setting *set)
+static void	go_up(t_setting *set)
 {
 	int		x;
 	int		y;
 	double	spd;
-
 	spd = set->player->move_speed;
 	y = set->player->ply_i;
 	x = set->player->ply_j;
@@ -59,7 +58,7 @@ void	go_up(t_setting *set)
 		set->player->ply_i += (int)(set->player->dir_y * spd);
 }
 
-void	go_down(t_setting *set)
+static void	go_down(t_setting *set)
 {
 	int		x;
 	int		y;
@@ -73,17 +72,16 @@ void	go_down(t_setting *set)
 	if (set->map->map[y][(int)(x - set->player->dir_x * spd)] == '0')
 		set->player->ply_i -= (int)(set->player->dir_y * spd);
 }
-
+/*
 void	eescape(t_setting *set)
 {
 	(void)set;
 	exit(0);
 }
-
+*/
 
 void	check_keys(t_setting *set)
 {
-	
 	if(set->press_w == 1)
 		go_up(set);
 	if (set->press_s == 1)

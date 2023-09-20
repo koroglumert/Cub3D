@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:15:30 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/12 13:01:43 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/20 02:57:03 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
-
-# define	TEXT_W 64
-# define	TEXT_H 64
-# define 	WIDTH	1920
-# define	HEIGHT 1080
-
 
 typedef struct	s_img
 {
@@ -107,8 +101,6 @@ typedef struct		s_map
 	t_img			east;
 	int				img_h;
 	int				img_w;
-	int				win_j;
-	int				win_i;
 }					t_map;
 
 typedef struct	s_mlx
@@ -144,26 +136,34 @@ int		ft_atoi(const char *str);
 char	*ft_strdup(char *s1);
 
 int		check_texts_rgb(t_map *map, char *av1);
+void	ft_check_xpm(t_map *map);
 int		take_texts(char *str, t_map *map, int i, int flg);
 int		create_map_dp(t_map *map);
 int		valid_char(char *str);
 int		valid_map(t_map *map);
 int		where_am_i(t_setting *set, char **str);
-void	start_mlx(t_setting *set);
-void	take_rgb_f_c(t_setting *set);
-void	xpm_controller(t_map *map);
+void	mlx_start(t_setting *set);
+int		my_screen(t_setting *set);
 int		close_win(t_setting *set);
-void	player_coordinate (t_setting *set);
 void	paint_cloud_and_grass(t_setting *set);
-void	put_images(t_setting *set);
 int		press_key (int	keycode, t_setting *set);
 int		release_key(int keycode, t_setting *set);
-int		take_first_directs(t_setting *set);
-int		take_first_plane_coor(t_setting *set);
 void	ray_casting (t_setting *set);
-void	oh_my_walls(t_setting *set);
-void	get_images(t_setting *set, int j);
+void	ft_get_images(t_setting *set, t_player	*player, int j);
 void	check_keys(t_setting *set);
+
+# define	TEXT_W 64
+# define	TEXT_H 64
+# define 	WIDTH	640
+# define	HEIGHT 480
+
+# define	W 13
+# define	A 0
+# define	S 1
+# define	D 2
+# define	ESC 53
+# define	RIGHT 124
+# define	LEFT 123
 
 #endif
 
@@ -183,4 +183,36 @@ void	check_keys(t_setting *set);
  If strlen(curr_row) > strlen(row_on_bottom) && current col > strlen(row_on_bottom), current character should be ‘1’
 -------------------
 https://hackmd.io/@nszl/H1LXByIE2
+*/
+
+
+/*
+Bakış Yönünü Hesaplayın: Oyuncunun bakış yönünü hesaplamak için 
+oyuncunun pozisyonundan hedef noktasına doğru bir vektör oluşturun. 
+Bu vektör, oyuncunun bakış yönünü temsil eder. Bu vektörü NDC koordinatlarına dönüştürebilirsiniz, 
+ancak bu hesaplamayı yapmak için dönüşüm matrislerine ihtiyacınız olabilir.
+
+Yönü Kontrol Edin: Elde ettiğiniz bakış yönü vektörünün bileşenlerini 
+kontrol ederek, oyuncunun hangi yöne baktığını belirleyebilirsiniz. 
+Örneğin, bakış yönü vektörünün x bileşeni pozitifse, oyuncu doğuya bakıyor demektir. 
+Yönlerin NDC koordinatlarındaki karşılıklarını dikkate alarak bu kontrolü yapabilirsiniz.
+
+mlx_loop_hook ile ilgili bilgi:Örneğin, eğer bir uygulama 60 FPS (Frame Per Second) ile çalışıyorsa, 
+mlx_loop_hook ile belirtilen işlev her saniyede 60 kez çağrılacaktır. Bu, düzenli bir animasyon veya 
+grafik güncellemesi için uygun bir hızdır. Ancak, bu hız uygulama ve donanım özelliklerine göre değişebilir. (YUHHH) (solongda kullanmıştım :)
+
+*/
+
+
+/*
+MERT
+
+mlx destroy lazım
+
+Fonksiyon isimlerinin başında ft_
+
+1080x1920 piksel için define tanımlanabilir.
+
+özel klasör içerisndeki dosyaların isimlerinin başından klasör ismi silinebilir.
+
 */

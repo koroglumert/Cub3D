@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_textures.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:21:52 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/08 05:32:43 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/19 00:21:25 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int	fill_them(char *str, int *i, int type, t_map *map)
 {

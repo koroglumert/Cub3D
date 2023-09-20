@@ -1,17 +1,17 @@
-NO /Users/havyilma/Desktop/cub3d/textures/wood.xpm  
-SO /Users/havyilma/Desktop/cub3d/textures/colorstone.xpm
+NO textures/wood.xpm
+SO textures/colorstone.xpm
 
-WE /Users/havyilma/Desktop/cub3d/textures/greystone.xpm
+WE textures/greystone.xpm
 
 
-EA /Users/havyilma/Desktop/cub3d/textures/redbrick.xpm
+EA textures/redbrick.xpm
 
 F  0,80,0
 C  0,0,210
 
 1111111111111111111111111
 1000001000000000001111111
-100100100001000000000S00011
+100100100001000000000S0011
 10010010000000001111111111
 10010000000000000000000001
 11110000100000000000000111

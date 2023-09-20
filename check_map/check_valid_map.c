@@ -3,14 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:24:37 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/01 15:57:05 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/20 03:15:13 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
+
+int	where_am_i(t_setting *set, char **str)
+{
+	int	i;
+	int j;
+
+	i = -1;
+	while (str[++i])
+	{
+		j = -1;
+		while (str[i][++j])
+		{
+			if (str[i][j] == 'N' || str[i][j] == 'S' || str[i][j] == 'W' || str[i][j] == 'E')
+			{
+				set->player->ply_i = i;
+				set->player->ply_j = j;
+				return (0);
+			}
+		}
+	}
+	return(0);
+}
 
 int	valid_char(char *str)
 {

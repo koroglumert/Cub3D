@@ -3,118 +3,122 @@
 /*                                                        :::      ::::::::   */
 /*   directs_and_plane.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:53:34 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/14 13:35:26 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/20 03:31:47 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	take_first_directs(t_setting *set)
+static void	ft_oh_my_walls(t_player *player)
 {
-	set->player->dir_x = 0.0;
-	set->player->dir_y = 0.0; 
-	if (set->map->map[set->player->ply_i][set->player->ply_j] == 'N')
-		set->player->dir_x = 1.0; 
-	else if (set->map->map[set->player->ply_i][set->player->ply_j] == 'S')
-		set->player->dir_x = -1.0; 		
-	else if (set->map->map[set->player->ply_i][set->player->ply_j] == 'E')
-		set->player->dir_y = 1.0;
-	else if (set->map->map[set->player->ply_i][set->player->ply_j] == 'W')
-		set->player->dir_y = -1.0;
-	return(0);
-}
-
-int	take_first_plane_coor(t_setting *set)
-{
-	set->player->plane_x = 0;
-	set->player->plane_y = 0;
-	if (set->map->map[set->player->ply_i][set->player->ply_j] == 'N')
-		set->player->plane_y = 0.66;
-	else if (set->map->map[set->player->ply_i][set->player->ply_j] == 'S')
-		set->player->plane_y = -0.66;
-	else if (set->map->map[set->player->ply_i][set->player->ply_j] == 'E')
-		set->player->plane_x = 0.66;
-	else if (set->map->map[set->player->ply_i][set->player->ply_j] == 'W')
-		set->player->plane_x = -0.66;
-	return (0);
-}
-
-void	take_step_and_sidedist(t_setting *set) //benzer üçgenlerde uzunluk
-{
-	if (set->player->raydir_x < 0)
-	{
-		set->player->move_x = -1; 
-		set->player->sidedist_x = (set->player->ply_j - set->player->x)
-			* set->player->deltadist_x;
-	}
+	if (player->face_of_cube == 'x')
+		player->distance = player->sidedist_x - player->deltadist_x;
 	else
-	{
-		set->player->move_x = 1;
-		set->player->sidedist_x = (1 + set->player->x - set->player->ply_j)  // parantez içine +1 maybe
-			* set->player->deltadist_x;
-	}
-	if (set->player->raydir_y < 0)
-	{
-		set->player->move_y = -1;
-		set->player->sidedist_y = (set->player->ply_i - set->player->y)
-			* set->player->deltadist_y;
-	}
-	else
-	{
-		set->player->move_y = 1;
-		set->player->sidedist_y = (set->player->y - set->player->ply_j)  // +1 maybe
-			* set->player->deltadist_y;
-	}
+		player->distance = player->sidedist_y - player->deltadist_y;   //dik uzaklık olmadı bence bunlar ama neyse
+	player->wall_height = HEIGHT / player->distance;
+	player->beginning_of_the_walls = HEIGHT / 2 - player->wall_height / 2;
+	if (player->beginning_of_the_walls < 0)  // duvara çok yakın (dibinde) olma ihtimalimiz
+		player->beginning_of_the_walls = 0;
+	player->end_of_the_walls = HEIGHT / 2 + player->wall_height / 2;
+	if (player->end_of_the_walls >= HEIGHT)
+		player->end_of_the_walls = HEIGHT - 1;
+//	printf("%d   dist:%f  wall:%d  %d   %d\n", HEIGHT, set->player->distance, set->player->wall_height, set->player->beginning_of_the_walls, set->player->end_of_the_walls);
 }
 
-void	dda(t_setting *set)
+static void	ft_dda(t_player *player, t_map *map, int j)
 {
 	int	is_it_wall;
 
 	is_it_wall = 0;
 	while (is_it_wall == 0)
 	{
-		if (set->player->sidedist_x < set->player->sidedist_y)
+		if (player->sidedist_x < player->sidedist_y)
 		{
-			set->player->sidedist_x += set->player->deltadist_x;
-			set->player->x += set->player->move_x;
-			set->player->face_of_cube = 'x';
+			player->sidedist_x += player->deltadist_x;
+			player->x += player->move_x;
+			player->face_of_cube = 'x';
 		}
 		else
 		{
-			set->player->sidedist_y += set->player->deltadist_y;
-			set->player->y += set->player->move_y;
-			set->player->face_of_cube = 'y';
+			player->sidedist_y += player->deltadist_y;
+			player->y += player->move_y;
+			player->face_of_cube = 'y';
 		}
-		if (set->map->map[(int)set->player->y][(int)set->player->x] == '1')
+		if (map->map[(int)player->y][(int)player->x] == '1')
 			is_it_wall = 1;
+		
+	}
+	(void)j;
+}
+
+static void	ft_take_step_and_sidedist(t_player	*player) //benzer üçgenlerde uzunluk
+{
+	if (player->raydir_x < 0)
+	{
+		player->move_x = -1; 
+		player->sidedist_x = (player->ply_j - player->x)
+			* player->deltadist_x;
+	}
+	else
+	{
+		player->move_x = 1;
+		player->sidedist_x = (1 + player->x - player->ply_j)  // parantez içine +1 maybe
+			* player->deltadist_x;
+	}
+	if (player->raydir_y < 0)
+	{
+		player->move_y = -1;
+		player->sidedist_y = (player->ply_i - player->y)
+			* player->deltadist_y;
+	}
+	else
+	{
+		player->move_y = 1;
+		player->sidedist_y = (player->y - player->ply_j)  // +1 maybe
+			* player->deltadist_y;
 	}
 }
 
 void	ray_casting (t_setting *set)
 {
-	int	j;
+	t_player	*player;
+	int			j;
 
 	j = 0;
+	player = set->player;
 	while (j < WIDTH)
 	{
-		set->player->camera_x = 2 * j / (double)set->map->win_j - 1;
-		set->player->raydir_x = set->player->dir_x + set->player->plane_x * set->player->camera_x;
-		set->player->raydir_y = set->player->dir_y + set->player->plane_y * set->player->camera_x;
-		set->player->x = set->player->ply_j;
-		set->player->y = set->player->ply_i;
-		set->player->x = (double)(set->player->ply_j);
-		set->player->y = (double)(set->player->ply_i);
-		set->player->deltadist_x = fabs(1 / set->player->raydir_x);
-		set->player->deltadist_y = fabs(1 / set->player->raydir_y);
-		take_step_and_sidedist(set);
-		dda(set);
-		oh_my_walls(set);
-		get_images(set, j);
+		
+		player->camera_x = 2 * j / (double)WIDTH - 1;
+		player->raydir_x = player->dir_x +player->plane_x * player->camera_x;
+		player->raydir_y = player->dir_y + player->plane_y * player->camera_x;
+		player->x = player->ply_j;
+		
+		player->y = player->ply_i;
+		player->x = (double)(player->ply_j);
+		/*if (j == 322)
+		{
+			printf("son y = %d\n", set->player->ply_i);
+			fflush(stdout);
+		}*/
+		player->y = (double)(player->ply_i);
+		player->deltadist_x = fabs(1 / player->raydir_x);
+		player->deltadist_y = fabs(1 / player->raydir_y);
+		/*printf("j = %d, ", j);
+		fflush(stdout);*/
+		
+		ft_take_step_and_sidedist(set->player);
+		
+		ft_dda(set->player, set->map, j);
+
+		ft_oh_my_walls(set->player);
+
+		ft_get_images(set, set->player, j);
+
 		j++;
 	}
-	mlx_put_image_to_window(set->mlx->mlx_init, set->mlx->mlx_window, set->mlx->mlx_img, 0, 0);
+	//mlx_put_image_to_window(set->mlx->mlx_init, set->mlx->mlx_window, set->mlx->mlx_img, 0, 0); MERT: Bu neden burda??
 }
