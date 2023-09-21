@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:49:53 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/20 03:16:02 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/20 22:44:16 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ static int	ft_take_directs(t_setting *set)
 		set->player->plane_x = -0.66;
 		set->player->dir_y = -1.0;
 	}
-	set->player->x = (double)(set->player->ply_j) + 0.5; //MERT: Bu neden var?
-	set->player->y = (double)(set->player->ply_i) + 0.5;
+//	set->player->x = (double)(set->player->ply_j) + 0.5; //MERT: Bu neden var?
+//	set->player->y = (double)(set->player->ply_i) + 0.5;
 	return(0);
 }
 
@@ -58,20 +58,19 @@ int main(int ac, char **av)
 		printf("Wrong argument count!\n");
 		return (1);
 	}
-	//set = malloc(sizeof(t_setting)); //MERT: leak bırakmaz içerideki hiçbir malloc çünkü mainde tutuyır adresi (silince bırakır mı emin değilim)
 	ft_init(&set);
-
-	//MERT: Buradan başlayıp
 	if (check_texts_rgb(set.map, av[1]) || create_map_dp(set.map) 
 		|| valid_char((set.map)->map_p)
 		|| valid_map(set.map) || where_am_i(&set, set.map->map))
-		return (0); //leak olmayacağı için free'ye de gerek yok.
+		return (0);
 	set.map->img_h = 64;
 	set.map->img_w = 64;
 	ft_check_xpm(set.map);
 	ft_take_directs(&set);
 	ft_take_rgb_f_c(&set);
+	//printf("aa\n");
 	//MERT: Bu kısma kadar yeni bir dosya veya check main fonksiyonu ile yönetilmeli.
 	mlx_start(&set);
+	//printf("bbbb\n");
 	return (0);
 }

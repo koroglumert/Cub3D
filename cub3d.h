@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:15:30 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/20 02:57:03 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/20 22:29:59 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,8 @@ int		release_key(int keycode, t_setting *set);
 void	ray_casting (t_setting *set);
 void	ft_get_images(t_setting *set, t_player	*player, int j);
 void	check_keys(t_setting *set);
+void	ft_images_management(t_mlx *mlx, t_map *map);
+void	ft_init_mlx(t_mlx *mlx);
 
 # define	TEXT_W 64
 # define	TEXT_H 64

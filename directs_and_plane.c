@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   directs_and_plane.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:53:34 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/20 03:31:47 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/20 23:00:32 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,23 +93,14 @@ void	ray_casting (t_setting *set)
 	{
 		
 		player->camera_x = 2 * j / (double)WIDTH - 1;
-		player->raydir_x = player->dir_x +player->plane_x * player->camera_x;
+		player->raydir_x = player->dir_x + player->plane_x * player->camera_x;
 		player->raydir_y = player->dir_y + player->plane_y * player->camera_x;
-		player->x = player->ply_j;
-		
-		player->y = player->ply_i;
+	//	printf("player->raydir_x:%f   player->raydir_y:%f\n", player->raydir_x,player->raydir_y);
+
 		player->x = (double)(player->ply_j);
-		/*if (j == 322)
-		{
-			printf("son y = %d\n", set->player->ply_i);
-			fflush(stdout);
-		}*/
 		player->y = (double)(player->ply_i);
 		player->deltadist_x = fabs(1 / player->raydir_x);
 		player->deltadist_y = fabs(1 / player->raydir_y);
-		/*printf("j = %d, ", j);
-		fflush(stdout);*/
-		
 		ft_take_step_and_sidedist(set->player);
 		
 		ft_dda(set->player, set->map, j);
@@ -117,8 +108,7 @@ void	ray_casting (t_setting *set)
 		ft_oh_my_walls(set->player);
 
 		ft_get_images(set, set->player, j);
-
+		
 		j++;
 	}
-	//mlx_put_image_to_window(set->mlx->mlx_init, set->mlx->mlx_window, set->mlx->mlx_img, 0, 0); MERT: Bu neden burda??
 }

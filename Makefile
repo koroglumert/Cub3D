@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+         #
+#    By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 19:51:14 by havyilma          #+#    #+#              #
-#    Updated: 2023/09/19 22:29:03 by mkoroglu         ###   ########.fr        #
+#    Updated: 2023/09/20 18:22:23 by havyilma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,9 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
+	@$(RM) ./get_next_line/*.o
 
-#make clean -C ./minilibx
+#	@$(RM) ./minilibx/*.o
 
 re : fclean all
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_keys.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:50:52 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/20 03:31:39 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/20 22:52:54 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,13 @@
 
 int	my_screen(t_setting *set)
 {
-	mlx_destroy_image (set->mlx->mlx_init, set->mlx->mlx_img); //MERT: neden destroy ettik 
-	set->mlx->mlx_img = mlx_new_image(set->mlx->mlx_init, WIDTH, HEIGHT);
-	/*set->mlx->mlx_img_addr = mlx_get_data_addr(set->mlx->mlx_img, 
-		&set->mlx->bits_per_pixel, &set->mlx->size_line, &set->mlx->endian);*/
-	
-	printf("M\n");
-	fflush(stdout);
-	ray_casting(set); //MERT KENDİME: Burası tuşa bağlı konumda düzenlemeyi sağlayacak yer
-	printf("N\n");
-	fflush(stdout);
-	check_keys(set); //MERT KENDİME: Check keys mi ray casting mi önde olmalı?
-	
-	mlx_clear_window(set->mlx->mlx_init, set->mlx->mlx_window);
-	
+
+//	check_keys(set); //MERT KENDİME: Check keys mi ray casting mi önde olmalı?
+
 	paint_cloud_and_grass(set); //MERT KENDİME: Burası ekrana baskıyı sağlayacak yer, sıfırdan kodlamam lazım
+	ray_casting(set); //MERT KENDİME: Burası tuşa bağlı konumda düzenlemeyi sağlayacak yer
+	mlx_clear_window(set->mlx->mlx_init, set->mlx->mlx_window);
+	mlx_put_image_to_window(set->mlx->mlx_init, set->mlx->mlx_window, set->mlx->mlx_img, 0, 0);
 	return (0);
 }
 
@@ -78,7 +70,7 @@ int	press_key (int	keycode, t_setting *set)
 		return (0);
 	printf("P\n");
 	fflush(stdout);
-	my_screen(set);
+//	my_screen(set);
 	return (1);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_main.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:49:21 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/19 19:56:40 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/20 21:44:47 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,5 @@ int	check_texts_rgb(t_map *map, char *av1)
 		printf("Map includes wrong, missing or extra characters!\n");
 		return (1);
 	}
-//	else // map_starter 2 3 4 veya > 6
-
 	return (0);
 }
