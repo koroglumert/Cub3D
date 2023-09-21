@@ -6,38 +6,37 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:49:53 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/20 22:44:16 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:56:57 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+//kodu birleştimre where am ı
 static int	ft_take_directs(t_setting *set)
 {
 	set->player->dir_x = 0.0; //MERT: BU iki satır neden var? silinince normda çözülür.
 	set->player->dir_y = 0.0; 
-	if (set->map->map[set->player->ply_i][set->player->ply_j] == 'N')
+	if (set->map->map[(int)set->player->pos_y][(int)set->player->pos_x] == 'N')
 	{
-		set->player->dir_x = 1.0; 
+		set->player->dir_x = 1.0;
 		set->player->plane_y = 0.66;
 	}
-	else if (set->map->map[set->player->ply_i][set->player->ply_j] == 'S')
+	else if (set->map->map[(int)set->player->pos_y][(int)set->player->pos_x] == 'S')
 	{
 		set->player->dir_x = -1.0; 		
 		set->player->plane_y = -0.66;
 	}
-	else if (set->map->map[set->player->ply_i][set->player->ply_j] == 'E')
+	else if (set->map->map[(int)set->player->pos_y][(int)set->player->pos_x] == 'E')
 	{
 		set->player->plane_x = 0.66;
 		set->player->dir_y = 1.0;
 	}
-	else if (set->map->map[set->player->ply_i][set->player->ply_j] == 'W')
+	else if (set->map->map[(int)set->player->pos_y][(int)set->player->pos_x] == 'W')
 	{
 		set->player->plane_x = -0.66;
 		set->player->dir_y = -1.0;
 	}
-//	set->player->x = (double)(set->player->ply_j) + 0.5; //MERT: Bu neden var?
-//	set->player->y = (double)(set->player->ply_i) + 0.5;
 	return(0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:24:37 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/20 03:15:13 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:46:07 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	where_am_i(t_setting *set, char **str)
 		{
 			if (str[i][j] == 'N' || str[i][j] == 'S' || str[i][j] == 'W' || str[i][j] == 'E')
 			{
-				set->player->ply_i = i;
-				set->player->ply_j = j;
+				set->player->pos_y = (double)i;
+				set->player->pos_x = (double)j;
 				return (0);
 			}
 		}
@@ -77,9 +77,9 @@ int	create_map_dp(t_map *map)
 			length++;
 	map->map_length = length;
 	map->map = malloc(sizeof(char *) * (length + 1));
+	map->map[length] = NULL;
 	i = -1;
 	j = 0;
-	map->map[i] = NULL;
 	while (++i < length)
 	{
 		start = j;

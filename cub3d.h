@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:15:30 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/20 22:29:59 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:44:44 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ typedef struct s_texture{
 }			t_texture;
 */
 typedef struct	s_player{
-	double		x;
-	double		y;
 	double		dir_x;
 	double		dir_y;
 	double		speed;
@@ -56,8 +54,10 @@ typedef struct	s_player{
 	double		move_speed;
 	double		plane_x;
 	double		plane_y;
-	int			ply_i;
-	int			ply_j;
+	double		pos_x;
+	double		pos_y;
+	int			map_y;
+	int			map_x;
 	double		camera_x;
 	double		camera_y;
 	double		raydir_x;
@@ -73,8 +73,8 @@ typedef struct	s_player{
 	int			wall_height;
 	int			beginning_of_the_walls;
 	int			end_of_the_walls;
-	int			wall_x;
-	int			wall_y;
+	double		wall_x;
+	double		wall_y;
 	int			text_x;
 	int			text_y;
 	double		text_pos;
@@ -154,10 +154,10 @@ void	check_keys(t_setting *set);
 void	ft_images_management(t_mlx *mlx, t_map *map);
 void	ft_init_mlx(t_mlx *mlx);
 
-# define	TEXT_W 64
-# define	TEXT_H 64
+# define	TEXT_W 640
+# define	TEXT_H 640
 # define 	WIDTH	640
-# define	HEIGHT 480
+# define	HEIGHT 640
 
 # define	W 13
 # define	A 0
@@ -216,5 +216,9 @@ Fonksiyon isimlerinin başında ft_
 1080x1920 piksel için define tanımlanabilir.
 
 özel klasör içerisndeki dosyaların isimlerinin başından klasör ismi silinebilir.
+
+posx ve posy her hareketten sonra güncellenmeli.
+ bu PITCH nedir?
+
 
 */

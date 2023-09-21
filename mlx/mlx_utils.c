@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:46:23 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/20 22:43:08 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:55:45 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,11 @@ void	paint_cloud_and_grass(t_setting *set)
 		while (y < HEIGHT)
 		{
 			//printf("	XXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-			if (y < HEIGHT / 2) 
-			{
-				
 				test =  set->mlx->mlx_img_addr + (y * set->mlx->size_line + (x * set->mlx->bits_per_pixel / 8));
+			if (y < HEIGHT / 2) 	
 				*(unsigned int *)test = set->map->rgb_ceiling; 
-			}
-			
 			else
-			{
-				test =  set->mlx->mlx_img_addr + (y * set->mlx->size_line + (x * set->mlx->bits_per_pixel / 8));
 				*(unsigned int *)test = set->map->rgb_floor;
-			}
 			y++;
 		}
 		x++;

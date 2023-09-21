@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:50:52 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/20 22:52:54 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/21 14:27:30 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	close_win(t_setting *set)
 	mlx_destroy_window(set->mlx->mlx_init, set->mlx->mlx_window);
 	while (set->map->map[++i])
 		free (set->map->map[i]);
-	ft_free_str(set);
+	if (ft_free_str(set))
+		ft_free_str(set);
 /*	free_images (set); devamında
 	if (set->map->north->image)
 		free (set->map->north->path);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:18:48 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/19 20:10:19 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/21 14:28:12 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	ft_init(t_setting *set)
 //MERT: Fİnalde gerek kalacak mı kontrol edelim.
 int	ft_free_str(t_setting *set)
 {
-	if (set->map->north_text)
+	(void)set;
+	/*if (set->map->north_text)
 		free (set->map->north_text);
 	if (set->map->south_text)
 		free (set->map->south_text);
@@ -53,7 +54,7 @@ int	ft_free_str(t_setting *set)
 	if (set->map->rgb_c)
 		free (set->map->rgb_c);
 	if (set->map->rgb_f)
-		free (set->map->rgb_f);
+		free (set->map->rgb_f);*/
 	return (1);
 }
 

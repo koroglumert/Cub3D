@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:54:02 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/20 23:00:22 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:39:42 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,26 @@ void	ft_init_mlx(t_mlx *mlx)
 	mlx->mlx_img_addr = mlx_get_data_addr(mlx->mlx_img, 
 		&mlx->bits_per_pixel, &mlx->size_line, &mlx->endian);	
 }
+/*
+#include <stdio.h>
+void	ft_test(t_map *map)
+{
+	int i = 0;
+
+	while(map->north.data[i] != 0)
+	{
+		printf("D= %d\n", map->north.image[i]);
+		i++;
+	}
+	printf("\n i = %d, bpp %d, sizeline %d, endian %d, img weig %d, img height %d\n", i, map->north.bpp, map->north.sizeline, map->north.endian, map->north.img_w, map->north.img_h);
+}
+*/
 
 void	ft_images_management(t_mlx *mlx, t_map *map)
 {
 	
-	map->north.image = mlx_xpm_file_to_image(mlx->mlx_init, map->north_text, &(map->north.img_w), &(map->north.img_h));
 	map->south.image = mlx_xpm_file_to_image(mlx->mlx_init, map->south_text, &(map->south.img_w), &(map->south.img_h));
+	map->north.image = mlx_xpm_file_to_image(mlx->mlx_init, map->north_text, &(map->north.img_w), &(map->north.img_h));
 	map->west.image = mlx_xpm_file_to_image(mlx->mlx_init, map->west_text, &(map->west.img_w), &(map->west.img_h));
 	map->east.image = mlx_xpm_file_to_image(mlx->mlx_init, map->east_text, &(map->east.img_w), &(map->east.img_h));
 	if (!map->north.image || !map->south.image || !map->west.image || !map->east.image)
