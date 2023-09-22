@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+         #
+#    By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 19:51:14 by havyilma          #+#    #+#              #
-#    Updated: 2023/09/22 00:18:01 by mkoroglu         ###   ########.fr        #
+#    Updated: 2023/09/22 18:58:47 by havyilma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ RM = rm -rf
 all : $(MLX) $(NAME) $(OBJS)
 
 $(MLX) :
-#make -C minilibx
+#	make -C minilibx
 
 $(NAME) : $(OBJS) $(GNLOBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(GNLOBJS) $(LFLAGS) -o $(NAME)
@@ -42,7 +42,7 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 	@$(RM) ./get_next_line/*.o
-#@$(RM) ./minilibx/*.o
+#	@$(RM) ./minilibx/*.o
 
 re : fclean all
 

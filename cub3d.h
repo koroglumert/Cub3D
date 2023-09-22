@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:15:30 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/22 00:44:29 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/22 21:12:47 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@
 typedef struct	s_img
 {
 	void	*window;
-	int		*image;
+	void	*image;
 	char	*data;
 	int		bpp; 
 	int		sizeline;
 	int		endian;
 	int		img_h;
 	int		img_w;
-	char	*content;
 }				t_img;
 /*
 typedef struct s_texture{
@@ -92,8 +91,8 @@ typedef struct		s_map
 	int				map_length;
 	int				*rgb_c;
 	int				*rgb_f;
-	long long int	rgb_ceiling;
-	long long int	rgb_floor;
+	int	rgb_ceiling;
+	int	rgb_floor;
 	int				rgb_control;
 	t_img			north;
 	t_img			south;
@@ -107,7 +106,7 @@ typedef struct	s_mlx
 {
 	void	*mlx_init;
 	void	*mlx_img;
-	char	*mlx_img_addr;
+	int		*mlx_img_addr;
 	void	*mlx_window;
 	int		bits_per_pixel;
 	int		size_line;

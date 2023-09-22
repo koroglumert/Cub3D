@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:49:53 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/21 18:56:57 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/22 22:02:50 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ static int	ft_take_directs(t_setting *set)
 {
 	set->player->dir_x = 0.0; //MERT: BU iki satır neden var? silinince normda çözülür.
 	set->player->dir_y = 0.0; 
-	if (set->map->map[(int)set->player->pos_y][(int)set->player->pos_x] == 'N')
+	if (set->map->map[(int)set->player->pos_y][(int)set->player->pos_x] == 'E')
 	{
 		set->player->dir_x = 1.0;
 		set->player->plane_y = 0.66;
 	}
-	else if (set->map->map[(int)set->player->pos_y][(int)set->player->pos_x] == 'S')
+	else if (set->map->map[(int)set->player->pos_y][(int)set->player->pos_x] == 'W')
 	{
 		set->player->dir_x = -1.0; 		
 		set->player->plane_y = -0.66;
 	}
-	else if (set->map->map[(int)set->player->pos_y][(int)set->player->pos_x] == 'E')
+	else if (set->map->map[(int)set->player->pos_y][(int)set->player->pos_x] == 'S')
 	{
 		set->player->plane_x = 0.66;
 		set->player->dir_y = 1.0;
 	}
-	else if (set->map->map[(int)set->player->pos_y][(int)set->player->pos_x] == 'W')
+	else if (set->map->map[(int)set->player->pos_y][(int)set->player->pos_x] == 'N')
 	{
 		set->player->plane_x = -0.66;
 		set->player->dir_y = -1.0;
@@ -67,9 +67,7 @@ int main(int ac, char **av)
 	ft_check_xpm(set.map);
 	ft_take_directs(&set);
 	ft_take_rgb_f_c(&set);
-	//printf("aa\n");
 	//MERT: Bu kısma kadar yeni bir dosya veya check main fonksiyonu ile yönetilmeli.
 	mlx_start(&set);
-	//printf("bbbb\n");
 	return (0);
 }

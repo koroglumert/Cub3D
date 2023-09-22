@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_start.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:54:02 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/22 15:07:27 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/22 21:47:29 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 int	my_screen(t_setting *set)
 {
+	//image destroy gerekir mi?
+	mlx_destroy_image(set->mlx->mlx_init, set->mlx->mlx_img);
+	set->mlx->mlx_img = mlx_new_image(set->mlx->mlx_init, WIDTH, HEIGHT);
+	set->mlx->mlx_img_addr = (int *)mlx_get_data_addr(set->mlx->mlx_img, 
+		&set->mlx->bits_per_pixel, &set->mlx->size_line, &set->mlx->endian);	
 	paint_cloud_and_grass(set);
-	check_keys(set);
+//	check_keys(set); //yeri rayin altında mı?
 	ray_casting(set); //MERT KENDİME: Burası tuşa bağlı konumda düzenlemeyi sağlayacak yer
-	//exit(0);
-	mlx_clear_window(set->mlx->mlx_init, set->mlx->mlx_window);
-	mlx_put_image_to_window(set->mlx->mlx_init, set->mlx->mlx_window, set->mlx->mlx_img, 0, 0);
+//	mlx_clear_window(set->mlx->mlx_init, set->mlx->mlx_window);
+//	mlx_put_image_to_window(set->mlx->mlx_init, set->mlx->mlx_window, set->mlx->mlx_img, 0, 0);
 	return (0);
 }
 
@@ -28,7 +32,7 @@ void	ft_init_mlx(t_mlx *mlx)
 	mlx->mlx_init = mlx_init();
 	mlx->mlx_window = mlx_new_window(mlx->mlx_init, WIDTH, HEIGHT, "cub3d");
 	mlx->mlx_img = mlx_new_image(mlx->mlx_init, WIDTH, HEIGHT);
-	mlx->mlx_img_addr = mlx_get_data_addr(mlx->mlx_img, 
+	mlx->mlx_img_addr = (int *)mlx_get_data_addr(mlx->mlx_img, 
 		&mlx->bits_per_pixel, &mlx->size_line, &mlx->endian);	
 }
 /*
@@ -68,8 +72,8 @@ void	mlx_start(t_setting *set)
 {
 	ft_init_mlx(set->mlx);
 	ft_images_management(set->mlx, set->map);
-	mlx_hook(set->mlx->mlx_window, 2, 1L << 0, &press_key, set);
-	mlx_hook(set->mlx->mlx_window, 3, 1L << 0, &release_key, set);
+//	mlx_hook(set->mlx->mlx_window, 2, 1L << 0, &press_key, set);
+//	mlx_hook(set->mlx->mlx_window, 3, 1L << 0, &release_key, set);
 	mlx_hook(set->mlx->mlx_window, 17, 0, close_win, set);
 	//mlx_loop_hook(set->mlx->mlx_init, my_screen, set);
 	my_screen(set);
