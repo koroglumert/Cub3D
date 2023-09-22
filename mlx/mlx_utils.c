@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:46:23 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/21 17:55:45 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/22 00:27:41 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ void	paint_cloud_and_grass(t_setting *set)
 	{
 		y = 0;
 		while (y < HEIGHT)
-		{
-			//printf("	XXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
-				test =  set->mlx->mlx_img_addr + (y * set->mlx->size_line + (x * set->mlx->bits_per_pixel / 8));
-			if (y < HEIGHT / 2) 	
-				*(unsigned int *)test = set->map->rgb_ceiling; 
+		{	test =  set->mlx->mlx_img_addr + (y * set->mlx->size_line + (x * set->mlx->bits_per_pixel / 8));
+			if (y < HEIGHT / 2)
+				*(unsigned int *)test = set->map->rgb_ceiling;
 			else
 				*(unsigned int *)test = set->map->rgb_floor;
 			y++;

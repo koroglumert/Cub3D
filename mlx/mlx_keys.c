@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_keys.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:50:52 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/21 14:27:30 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/22 00:21:30 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-int	my_screen(t_setting *set)
-{
-
-//	check_keys(set); //MERT KENDİME: Check keys mi ray casting mi önde olmalı?
-
-	paint_cloud_and_grass(set); //MERT KENDİME: Burası ekrana baskıyı sağlayacak yer, sıfırdan kodlamam lazım
-	ray_casting(set); //MERT KENDİME: Burası tuşa bağlı konumda düzenlemeyi sağlayacak yer
-	mlx_clear_window(set->mlx->mlx_init, set->mlx->mlx_window);
-	mlx_put_image_to_window(set->mlx->mlx_init, set->mlx->mlx_window, set->mlx->mlx_img, 0, 0);
-	return (0);
-}
 
 int	close_win(t_setting *set)
 {

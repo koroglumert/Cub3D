@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+         #
+#    By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 19:51:14 by havyilma          #+#    #+#              #
-#    Updated: 2023/09/20 18:22:23 by havyilma         ###   ########.fr        #
+#    Updated: 2023/09/22 00:18:01 by mkoroglu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS =	./check_map/check_map_main.c ./check_map/check_map_textures.c ./check_map/check_valid_map.c ./check_map/check_xpm.c\
 		./mlx/mlx_keys.c ./mlx/mlx_start.c ./mlx/mlx_utils.c \
-		directs_and_plane.c walls_and_roses.c turning_around.c \
+		ray_casting.c get_images.c turning_around.c\
 		utils.c utils_libft.c \
 		cub3d.c 
 GNL = get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c
@@ -27,7 +27,6 @@ RM = rm -rf
 all : $(MLX) $(NAME) $(OBJS)
 
 $(MLX) :
-	
 #make -C minilibx
 
 $(NAME) : $(OBJS) $(GNLOBJS)
@@ -43,8 +42,7 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 	@$(RM) ./get_next_line/*.o
-
-#	@$(RM) ./minilibx/*.o
+#@$(RM) ./minilibx/*.o
 
 re : fclean all
 

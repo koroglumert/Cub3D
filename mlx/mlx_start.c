@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_start.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:54:02 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/21 18:39:42 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:07:27 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+int	my_screen(t_setting *set)
+{
+	paint_cloud_and_grass(set);
+	check_keys(set);
+	ray_casting(set); //MERT KENDİME: Burası tuşa bağlı konumda düzenlemeyi sağlayacak yer
+	//exit(0);
+	mlx_clear_window(set->mlx->mlx_init, set->mlx->mlx_window);
+	mlx_put_image_to_window(set->mlx->mlx_init, set->mlx->mlx_window, set->mlx->mlx_img, 0, 0);
+	return (0);
+}
 
 void	ft_init_mlx(t_mlx *mlx)
 {
