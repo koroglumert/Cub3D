@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   turning_around.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:10:02 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/21 15:04:15 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/22 23:56:45 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	turn_right(t_setting *set)
 	double	old_plane_x;
 	double	rs;
 
-	rs = set->player->rot_speed;
+	rs = set->rot_speed;
 	old_dir_x = set->player->dir_x;
 	old_plane_x = set->player->plane_x;
 	
@@ -34,7 +34,7 @@ static void	turn_left(t_setting *set)
 	double	old_plane_x;
 	double	rs;
 
-	rs = set->player->rot_speed;
+	rs = set->rot_speed;
 	old_dir_x = set->player->dir_x;
 	old_plane_x = set->player->plane_x;
 	
@@ -44,18 +44,23 @@ static void	turn_left(t_setting *set)
 	set->player->plane_y = old_plane_x * sin(rs) + set->player->plane_y * cos(rs);	
 }
 
-static void	go_up(t_setting *set)
+void	go_up(t_setting *set)
 {
 	int		x;
 	int		y;
 	double	spd;
-	spd = set->player->move_speed;
+	spd = set->move_speed;
+	printf("sdp = %f\n", set->player->dir_x);
 	y = set->player->pos_y;
 	x = set->player->pos_x;
-	if (set->map->map[y + (int)(set->player->dir_x * spd)][x] == '0')
-		set->player->pos_x += (int)(set->player->dir_x * spd);
-	if (set->map->map[y][x + (int)(set->player->dir_x * spd)] == '0')
-		set->player->pos_y += (int)(set->player->dir_y * spd);
+	if (set->map->map[y + (int)(set->player->dir_y * spd)][x + (int)(set->player->dir_x * spd)] != '1')
+	{
+		
+		set->player->pos_x += set->player->dir_x * spd;
+		set->player->pos_y += set->player->dir_y * spd;
+		
+	}
+	
 }
 
 static void	go_down(t_setting *set)
@@ -64,7 +69,7 @@ static void	go_down(t_setting *set)
 	int		y;
 	double	spd;
 
-	spd = set->player->move_speed;
+	spd = set->move_speed;
 	y = set->player->pos_y;
 	x = set->player->pos_x;
 	if (set->map->map[(int)(y - set->player->dir_x * spd)][x] == '0')
@@ -80,7 +85,7 @@ void	eescape(t_setting *set)
 }
 */
 
-void	check_keys(t_setting *set)
+void	check_keys(t_setting *set) // eksik tuşlar
 {
 	if(set->press_w == 1)
 		go_up(set);

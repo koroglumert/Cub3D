@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:53:34 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/22 22:12:34 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/22 23:06:54 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	ft_take_step_and_sidedist(t_player	*player) //benzer üçgenlerde uz
 	if (player->raydir_x < 0)
 	{
 		player->move_x = -1; 
-		player->sidedist_x = (player->pos_x - player->map_x)
+		player->sidedist_x = (1.0 + player->pos_x - player->map_x)
 			* player->deltadist_x;
 	}
 	else
@@ -68,7 +68,7 @@ static void	ft_take_step_and_sidedist(t_player	*player) //benzer üçgenlerde uz
 	if (player->raydir_y < 0)
 	{
 		player->move_y = -1;
-		player->sidedist_y = (player->pos_y - player->map_y)
+		player->sidedist_y = (1.0 + player->pos_y - player->map_y)
 			* player->deltadist_y;
 	}
 	else
@@ -101,6 +101,4 @@ void	ray_casting (t_setting *set)
 		ft_get_images(set, set->player, x);
 		x++;
 	}
-	mlx_put_image_to_window(set->mlx->mlx_init, set->mlx->mlx_window, set->mlx->mlx_img, 0, 0);
-
 }

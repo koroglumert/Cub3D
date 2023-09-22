@@ -6,7 +6,7 @@
 /*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:50:52 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/22 00:21:30 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/22 23:39:11 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ int	press_key (int	keycode, t_setting *set)
 	set->move_speed = 0.05;
 	set->rot_speed = 0.05;
 	if (keycode == W)
+	{
+	go_up(set);
 		set->press_w = 1; //go right çağır
+	}
 	else if (keycode == A)
 		set->press_a = 1;
 	else if (keycode == S)
@@ -57,9 +60,10 @@ int	press_key (int	keycode, t_setting *set)
 		set->direct_left = 1;
 	else
 		return (0);
+		check_keys(set);
 	printf("P\n");
 	fflush(stdout);
-//	my_screen(set);
+	my_screen(set);
 	return (1);
 }
 
@@ -81,6 +85,6 @@ int	release_key(int keycode, t_setting *set)
 		return (0);
 	printf("R\n");
 	fflush(stdout);
-	//my_screen(set);
+	my_screen(set);
 	return (1);
 }

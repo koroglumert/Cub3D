@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_start.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:54:02 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/22 21:47:29 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/22 23:40:02 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@ int	my_screen(t_setting *set)
 	set->mlx->mlx_img_addr = (int *)mlx_get_data_addr(set->mlx->mlx_img, 
 		&set->mlx->bits_per_pixel, &set->mlx->size_line, &set->mlx->endian);	
 	paint_cloud_and_grass(set);
-//	check_keys(set); //yeri rayin altında mı?
+	check_keys(set); //yeri rayin altında mı?
 	ray_casting(set); //MERT KENDİME: Burası tuşa bağlı konumda düzenlemeyi sağlayacak yer
+	mlx_put_image_to_window(set->mlx->mlx_init, set->mlx->mlx_window, set->mlx->mlx_img, 0, 0);
+	
+	/*if (set->move_speed)
+		my_screen(set);*/
 //	mlx_clear_window(set->mlx->mlx_init, set->mlx->mlx_window);
 //	mlx_put_image_to_window(set->mlx->mlx_init, set->mlx->mlx_window, set->mlx->mlx_img, 0, 0);
 	return (0);
@@ -72,10 +76,10 @@ void	mlx_start(t_setting *set)
 {
 	ft_init_mlx(set->mlx);
 	ft_images_management(set->mlx, set->map);
-//	mlx_hook(set->mlx->mlx_window, 2, 1L << 0, &press_key, set);
-//	mlx_hook(set->mlx->mlx_window, 3, 1L << 0, &release_key, set);
+	mlx_hook(set->mlx->mlx_window, 2, 1L << 0, &press_key, set);
+	mlx_hook(set->mlx->mlx_window, 3, 1L << 0, &release_key, set);
 	mlx_hook(set->mlx->mlx_window, 17, 0, close_win, set);
-	//mlx_loop_hook(set->mlx->mlx_init, my_screen, set);
-	my_screen(set);
+	mlx_loop_hook(set->mlx->mlx_init, my_screen, set);
+	//my_screen(set);
 	mlx_loop(set->mlx->mlx_init); //MERT KENDİME: Tuşa basılı tutulduğu sürekliliği sağlamak için loop'a almak gerekebilir.
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:15:30 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/22 21:12:47 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/22 23:38:55 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ typedef struct	s_player{
 	double		dir_x;
 	double		dir_y;
 	double		speed;
-	double		rot_speed;
-	double		move_speed;
 	double		plane_x;
 	double		plane_y;
 	double		pos_x;
@@ -152,6 +150,8 @@ void	ft_get_images(t_setting *set, t_player	*player, int j);
 void	check_keys(t_setting *set);
 void	ft_images_management(t_mlx *mlx, t_map *map);
 void	ft_init_mlx(t_mlx *mlx);
+
+void	go_up(t_setting *set);
 
 # define	TEXT_W 64
 # define	TEXT_H 64
