@@ -6,7 +6,7 @@
 /*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:01:58 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 04:08:55 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/23 13:21:18 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ void	image_put_pixel(t_img *img, int x, t_setting *set)
 {
 	int	texture_y;
 	int	color;
+
 	texture_y = (int)set->player->text_pos & (img->img_h - 1);
 	color = image_get_pixel(img, set->player->text_x, texture_y);
-	set->mlx->mlx_img_addr[set->player->beginning_of_the_walls * WIDTH + x] = color;
+	set->mlx->mlx_img_addr[set->player->beginning_of_the_walls
+		* WIDTH + x] = color;
 }
 
 t_img	get_side_image(t_setting *set)

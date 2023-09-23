@@ -6,7 +6,7 @@
 /*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:18:48 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 04:11:23 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/23 13:17:50 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,6 @@ void	ft_init(t_setting *set)
 	set->direct_left = 0;
 	set->move_speed = 0.05;
 	set->rot_speed = 0.05;
-//	set->map->north = malloc(sizeof(t_img));
-//	set->map->south = malloc(sizeof(t_img));
-//	set->map->west = malloc(sizeof(t_img));
-//	set->map->east = malloc(sizeof(t_img));
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -114,6 +110,3 @@ char	*ft_strdup(char *s1)
 	temp[i] = 0;
 	return (temp);
 }
-
-
-

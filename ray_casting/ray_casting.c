@@ -6,7 +6,7 @@
 /*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:53:34 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 04:09:15 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/23 13:21:54 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static void	ft_oh_my_walls(t_player *player)
 		player->distance = player->sidedist_x - player->deltadist_x;
 	else
 		player->distance = player->sidedist_y - player->deltadist_y;
-	
 	if (player->distance <= 0)
 		player->distance = 0.7;
 	player->wall_height = (int)(HEIGHT / player->distance);
@@ -55,7 +54,7 @@ static void	ft_take_step_and_sidedist(t_player	*player)
 {
 	if (player->raydir_x < 0)
 	{
-		player->move_x = -1; 
+		player->move_x = -1;
 		player->sidedist_x = (player->pos_x - player->map_x)
 			* player->deltadist_x;
 	}
@@ -79,7 +78,7 @@ static void	ft_take_step_and_sidedist(t_player	*player)
 	}
 }
 
-void	ray_casting (t_setting *set)
+void	ray_casting(t_setting *set)
 {
 	t_player	*player;
 	int			x;
@@ -90,11 +89,11 @@ void	ray_casting (t_setting *set)
 	{
 		player->camera_x = (2 * x / (double)WIDTH - 1);
 		player->raydir_x = player->dir_x + player->plane_x * player->camera_x;
-		player->raydir_y = player->dir_y + player->plane_y * player->camera_x; 
+		player->raydir_y = player->dir_y + player->plane_y * player->camera_x;
 		player->map_x = player->pos_x;
 		player->map_y = player->pos_y;
-			player->deltadist_x = fabs(1 / player->raydir_x);
-			player->deltadist_y = fabs(1 / player->raydir_y);
+		player->deltadist_x = fabs(1 / player->raydir_x);
+		player->deltadist_y = fabs(1 / player->raydir_y);
 		ft_take_step_and_sidedist(set->player);
 		ft_dda(set->player, set->map);
 		ft_oh_my_walls(set->player);
