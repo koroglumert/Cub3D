@@ -6,11 +6,11 @@
 #    By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 19:51:14 by havyilma          #+#    #+#              #
-#    Updated: 2023/09/23 04:12:03 by mkoroglu         ###   ########.fr        #
+#    Updated: 2023/09/23 20:27:39 by mkoroglu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =	./check_map/check_map_main.c ./check_map/check_map_textures.c ./check_map/check_valid_map.c ./check_map/check_xpm.c\
+SRCS =	./check_map/check_map_main.c ./check_map/check_map_textures.c ./check_map/check_valid_map.c ./check_map/check_xpm.c ./check_map/check_map_utils.c \
 		./mlx/mlx_keys.c ./mlx/mlx_start.c\
 		./ray_casting/ray_casting.c ./ray_casting/get_images.c ./ray_casting/turning_around.c \
 		utils.c cub3d.c
@@ -19,6 +19,7 @@ OBJS = $(SRCS:.c=.o)
 GNLOBJS = $(GNL:.c=.o)
 MLX = minilibx/mlx.a
 NAME = cub3d
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I./minilibx
 LFLAGS = -framework AppKit -framework OpenGL -L./minilibx -lmlx
 RM = rm -rf

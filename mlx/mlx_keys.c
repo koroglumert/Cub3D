@@ -6,13 +6,13 @@
 /*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:50:52 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 04:02:01 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/23 16:59:35 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	press_key (int	keycode, t_setting *set)
+int	press_key(int keycode, t_setting *set)
 {
 	if (keycode == W)
 		set->press_w = 1;

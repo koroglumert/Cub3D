@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:18:48 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 16:20:57 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/23 20:27:48 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,8 @@ char	*ft_strdup(char *s1)
 	return (temp);
 }
 
-
-int print_error (void)
+int	print_error(char *str)
 {
-	printf("Error\nelements are wrong\n");
-	return(1);
+	printf("Error\n%s\n", str);
+	return (1);
 }

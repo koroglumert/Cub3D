@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_textures.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:21:52 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 16:25:29 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/23 20:24:49 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	fill_them(char *str, int *i, int type, t_map *map)
 {
 	int	finish;
+
 	*i += 2;
 	while (str[*i] == 32)
 		(*i)++;
@@ -82,7 +83,7 @@ int	fill_f(t_map *map, int *i, int rgb, char *str)
 int	fill_intpointr(char *str, int *i, int type, t_map *map)
 {
 	int		rgb;
-	
+
 	rgb = 0;
 	*i += 1;
 	while (str[*i] == 32)
@@ -101,31 +102,32 @@ int	fill_intpointr(char *str, int *i, int type, t_map *map)
 	}
 	while (str[*i] == 32)
 		(*i)++;
-	if(rgb != 3 || (str[*i] != '\0' && str[*i] != '\n'))
+	if (rgb != 3 || (str[*i] != '\0' && str[*i] != '\n'))
 		return (1);
 	return (0);
 }
 
 int	take_texts(char *str, t_map *map, int i, int flg)
 {
-	while (str[i] == ' ')
-		i++;
 	if (str[i] && str[i + 1] && str[i] == 'N' && str[i + 1] == 'O')
 		flg = fill_them(str, &i, 'N', map);
-	else if (str[i] && str[i + 1] && str[i] == 'S' && str[i + 1] == 'O' && map->north_text != NULL)
+	else if (str[i] && str[i + 1] && str[i] == 'S'
+		&& str[i + 1] == 'O' && map->north_text != NULL)
 		flg = fill_them(str, &i, 'S', map);
-	else if (str[i] && str[i + 1] && str[i] == 'W' && str[i + 1] == 'E' && map->south_text != NULL)
+	else if (str[i] && str[i + 1] && str[i] == 'W'
+		&& str[i + 1] == 'E' && map->south_text != NULL)
 		flg = fill_them(str, &i, 'W', map);
-	else if (str[i] && str[i + 1] && str[i] == 'E' && str[i + 1] == 'A' && map->west_text != NULL)
+	else if (str[i] && str[i + 1] && str[i] == 'E'
+		&& str[i + 1] == 'A' && map->west_text != NULL)
 		flg = fill_them(str, &i, 'E', map);
 	else if (str[i] && str[i] == 'F' && map->rgb_c[0] == -1)
 		flg = fill_intpointr(str, &i, 'F', map);
 	else if (str[i] && str[i] == 'C' && map->rgb_f[0] != -1)
 		flg = fill_intpointr(str, &i, 'C', map);
-	else if(str[i] == '\n')
+	else if (str[i] == '\n')
 		return (0);
 	else
-		exit (print_error());
+		exit (print_error("Elements are wrong"));
 	if (flg == 1)
 	{
 		printf("Error\nMap includes wrong, missing or extra characters!\n");

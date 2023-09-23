@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   turning_around.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:10:02 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 16:26:03 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/23 19:59:42 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ static void	go_a_d(t_setting *set, double spd)
 	if (set->press_a == 1 && set->map->map[(int)(y - player->plane_y * spd)]
 		[(int)(x - player->plane_x * spd)] != '1')
 	{
-			player->pos_x -= player->plane_x * spd;
-			player->pos_y -= player->plane_y * spd;
+		player->pos_x -= player->plane_x * spd;
+		player->pos_y -= player->plane_y * spd;
 	}
 	if (set->press_d == 1 && set->map->map[(int)(y + player->plane_y * spd)]
 		[(int)(x + player->plane_x * spd)] != '1')
@@ -81,8 +81,8 @@ static void	go_w_s(t_setting *set, double spd)
 	if (set->press_w == 1 && set->map->map[(int)(y + player->dir_y * spd)]
 		[(int)(x + player->dir_x * spd)] != '1')
 	{
-			player->pos_x += player->dir_x * spd;
-			player->pos_y += player->dir_y * spd;
+		player->pos_x += player->dir_x * spd;
+		player->pos_y += player->dir_y * spd;
 	}
 	if (set->press_s == 1 && set->map->map[(int)(y - player->dir_y * spd)]
 		[(int)(x - player->dir_x * spd)] != '1')
@@ -94,12 +94,24 @@ static void	go_w_s(t_setting *set, double spd)
 
 void	check_keys(t_setting *set)
 {
-	if(set->press_w == 1 || set->press_s == 1)
+	if (set->press_w == 1 || set->press_s == 1)
 		go_w_s(set, set->move_speed);
-	if(set->press_a == 1 || set->press_d == 1)
+	if (set->press_a == 1 || set->press_d == 1)
 		go_a_d(set, set->move_speed);
 	if (set->direct_right == 1)
-		turn_right(set);
+	{
+		if (set->player->start_position == 'N'
+			|| set->player->start_position == 'S')
+			turn_right(set);
+		else
+			turn_left(set);
+	}
 	if (set->direct_left == 1)
-		turn_left(set);
+	{
+		if (set->player->start_position == 'N'
+			|| set->player->start_position == 'S')
+			turn_left(set);
+		else
+			turn_right(set);
+	}
 }

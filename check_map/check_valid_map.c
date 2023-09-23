@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:24:37 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 16:27:51 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/23 19:58:10 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	where_am_i(t_setting *set, char **str)
 			{
 				set->player->pos_y = (double)i;
 				set->player->pos_x = (double)j;
+				set->player->start_position = str[i][j];
 				return (0);
 			}
 		}
@@ -42,19 +43,18 @@ int	valid_char(char *str)
 
 	i = 0;
 	flag = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] == 'N' || str[i] == 'W' || str[i] == 'E' || str[i] == 'S')
 			flag += 1;
 		if (!(str[i] == '0' || str[i] == '1' || str[i] == ' '
-			|| str[i] == 'N' || str[i] == 'W' 
-			|| str[i] == 'E' || str[i] == 'S' || str[i] == '\n'))
+				|| str[i] == 'N' || str[i] == 'W'
+				|| str[i] == 'E' || str[i] == 'S' || str[i] == '\n'))
 		{
 			printf ("Error\nWrong input!\n");
 			return (1);
 		}
 		i++;
-		
 	}
 	if (flag != 1)
 	{
@@ -66,42 +66,39 @@ int	valid_char(char *str)
 
 int	create_map_dp(t_map *map)
 {
-	int		i;
 	int		length;
-	int		j;
-	int		start;
+	int		i;
 
 	i = -1;
 	length = 0;
-	while(map->map_p[++i])
-		if(map->map_p[i] == '\n' || map->map_p[i] == '\0')
+	while (map->map_p[++i])
+	{
+		if (map->map_p[i] == '\n')
+		{
 			length++;
+			if (map->map_p[i + 1] == '\0')
+				break ;
+		}
+	}
+	if (map->map_p[i] == '\0')
+		length++;
 	map->map_length = length;
 	map->map = malloc(sizeof(char *) * (length + 1));
 	map->map[length] = NULL;
-	i = -1;
-	j = 0;
-	while (++i < length)
-	{
-		start = j;
-		while (map->map_p[j] != '\n' && map->map_p[j] != '\0')
-			j++;
-		map->map[i] = ft_substr(map->map_p, start, j - start);
-		if(map->map_p[j] == '\n')
-			j++;
-	}
-	return(0);
+	ft_dp_2(map, length);
+	return (0);
 }
 
 int	check_zero(char **map, int i, int j, t_map *m)
 {
-	if(i == 0 || j == 0 || (i + 1 == m->map_length) || (j + 1 == ft_strlen(map[i])))
+	if (i == 0 || j == 0 || (i + 1 == m->map_length)
+		|| (j + 1 == ft_strlen(map[i])))
 		return (1);
 	if (j + 1 > ft_strlen(map[i - 1]))
 		return (1);
 	if (map[i + 1] && (j + 1 > ft_strlen(map[i + 1])))
 		return (1);
-	if (map[i + 1][j] == 32 || map[i - 1][j] == 32 
+	if (map[i + 1][j] == 32 || map[i - 1][j] == 32
 		|| map[i][j - 1] == 32 || map[i][j + 1] == 32)
 		return (1);
 	return (0);
@@ -114,7 +111,7 @@ int	valid_map(t_map *map)
 
 	i = 0;
 	j = 0;
-	while (i < map->map_length)
+	while (i < map->map_length - 1)
 	{
 		j = 0;
 		while (map->map[i][j])
@@ -124,13 +121,12 @@ int	valid_map(t_map *map)
 				if (check_zero(map->map, i, j, map))
 				{
 					printf("Error\nWrong map!\n");
-					return(1);
+					return (1);
 				}
 			}
 			j++;
 		}
 		i++;
 	}
-	return (0);	
+	return (0);
 }
-
