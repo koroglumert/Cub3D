@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:15:30 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 12:51:24 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/23 16:24:30 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,7 @@ typedef struct	s_img
 	int		img_h;
 	int		img_w;
 }				t_img;
-/*
-typedef struct s_texture{
-	void	*image;
-	char	*path;
-	char	*data;
-	int		use;
-	int		w;
-	int		h;
-	int		bpp;
-	int		sizeline;
-	int		endian;
-}			t_texture;
-*/
+
 typedef struct	s_player{
 	double		dir_x;
 	double		dir_y;
@@ -89,7 +77,7 @@ typedef struct		s_map
 	int				map_length;
 	int				*rgb_c;
 	int				*rgb_f;
-	int	rgb_ceiling;
+	int				rgb_ceiling;
 	int	rgb_floor;
 	int				rgb_control;
 	t_img			north;
@@ -127,7 +115,6 @@ typedef struct	s_setting
 }				t_setting;
 
 void	ft_init(t_setting *set);
-int		ft_free_str(t_setting *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_atoi(const char *str);
 char	*ft_strdup(char *s1);
@@ -149,6 +136,7 @@ void	ft_get_images(t_setting *set, t_player	*player, int j);
 void	check_keys(t_setting *set);
 void	ft_images_management(t_mlx *mlx, t_map *map);
 void	ft_init_mlx(t_mlx *mlx);
+int		print_error (void);
 
 # define	TEXT_W 64
 # define	TEXT_H 64

@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 21:04:14 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 12:23:06 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/23 16:27:01 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 static void	control_xpm(char *str)
 {
 	int	len;
+
 	len = ft_strlen(str);
 	if (len < 4)
 	{
 		printf("Error\nwrong path\n");
 		exit (1);
 	}
-	if (str[len - 1] != 'm' || str[len - 2] != 'p' || str[len - 3] != 'x' || str[len - 4] != '.')
+	if (str[len - 1] != 'm' || str[len - 2] != 'p'
+		|| str[len - 3] != 'x' || str[len - 4] != '.')
 	{
 		printf("Error\nextension error '.xpm'\n");
 		exit (1);
@@ -40,8 +42,9 @@ void	ft_check_xpm(t_map *map)
 {
 	int	*fd;
 	int	i;
-	textures_name_controller (map);
+
 	i = 0;
+	textures_name_controller (map);
 	fd = malloc(sizeof(int) * 4);
 	fd[0] = open(map->north_text, O_RDONLY);
 	fd[1] = open(map->south_text, O_RDONLY);

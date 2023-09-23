@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:24:37 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 12:22:58 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/23 16:27:51 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	where_am_i(t_setting *set, char **str)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = -1;
 	while (str[++i])
@@ -23,7 +23,8 @@ int	where_am_i(t_setting *set, char **str)
 		j = -1;
 		while (str[i][++j])
 		{
-			if (str[i][j] == 'N' || str[i][j] == 'S' || str[i][j] == 'W' || str[i][j] == 'E')
+			if (str[i][j] == 'N' || str[i][j] == 'S'
+				|| str[i][j] == 'W' || str[i][j] == 'E')
 			{
 				set->player->pos_y = (double)i;
 				set->player->pos_x = (double)j;
@@ -31,7 +32,7 @@ int	where_am_i(t_setting *set, char **str)
 			}
 		}
 	}
-	return(0);
+	return (0);
 }
 
 int	valid_char(char *str)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:18:48 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 13:17:50 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/23 16:20:57 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	ft_init(t_setting *set)
 	set->map = malloc(sizeof(t_map));
 	set->mlx = malloc(sizeof(t_mlx));
 	set->player = malloc(sizeof(t_player));
+	set->map->map_p = NULL;
 	set->map->north_text = NULL;
 	set->map->south_text = NULL;
 	set->map->west_text = NULL;
@@ -109,4 +110,11 @@ char	*ft_strdup(char *s1)
 	}
 	temp[i] = 0;
 	return (temp);
+}
+
+
+int print_error (void)
+{
+	printf("Error\nelements are wrong\n");
+	return(1);
 }
