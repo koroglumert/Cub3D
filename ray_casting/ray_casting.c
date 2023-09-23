@@ -6,11 +6,11 @@
 /*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:53:34 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/22 23:06:54 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/23 04:09:15 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 static void	ft_oh_my_walls(t_player *player)
 {
@@ -23,7 +23,7 @@ static void	ft_oh_my_walls(t_player *player)
 		player->distance = 0.7;
 	player->wall_height = (int)(HEIGHT / player->distance);
 	player->beginning_of_the_walls = (HEIGHT / 2) - (player->wall_height / 2);
-	if (player->beginning_of_the_walls < 0)  // duvara çok yakın (dibinde) olma ihtimalimiz
+	if (player->beginning_of_the_walls < 0)
 		player->beginning_of_the_walls = 0;
 	player->end_of_the_walls = (HEIGHT / 2) + (player->wall_height / 2);
 	if (player->end_of_the_walls >= HEIGHT)
@@ -46,17 +46,17 @@ static void	ft_dda(t_player *player, t_map *map)
 			player->map_y += player->move_y;
 			player->face_of_cube = 'y';
 		}
-		if (map->map[player->map_y][player->map_x] == '1') //hata varsa doubleden kaynaklı
+		if (map->map[player->map_y][player->map_x] == '1')
 			break ;
 	}
 }
 
-static void	ft_take_step_and_sidedist(t_player	*player) //benzer üçgenlerde uzunluk
+static void	ft_take_step_and_sidedist(t_player	*player)
 {
 	if (player->raydir_x < 0)
 	{
 		player->move_x = -1; 
-		player->sidedist_x = (1.0 + player->pos_x - player->map_x)
+		player->sidedist_x = (player->pos_x - player->map_x)
 			* player->deltadist_x;
 	}
 	else
@@ -68,7 +68,7 @@ static void	ft_take_step_and_sidedist(t_player	*player) //benzer üçgenlerde uz
 	if (player->raydir_y < 0)
 	{
 		player->move_y = -1;
-		player->sidedist_y = (1.0 + player->pos_y - player->map_y)
+		player->sidedist_y = (player->pos_y - player->map_y)
 			* player->deltadist_y;
 	}
 	else

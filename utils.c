@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:18:48 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/21 14:28:12 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/23 04:11:23 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,32 +30,90 @@ void	ft_init(t_setting *set)
 	set->map->rgb_f[0] = -1;
 	set->map->rgb_f[1] = -1;
 	set->map->rgb_f[2] = -1;
+	set->press_w = 0;
+	set->press_a = 0;
+	set->press_s = 0;
+	set->press_d = 0;
+	set->direct_right = 0;
+	set->direct_left = 0;
+	set->move_speed = 0.05;
+	set->rot_speed = 0.05;
 //	set->map->north = malloc(sizeof(t_img));
 //	set->map->south = malloc(sizeof(t_img));
 //	set->map->west = malloc(sizeof(t_img));
 //	set->map->east = malloc(sizeof(t_img));
 }
 
-
-//MERT: Fİnalde gerek kalacak mı kontrol edelim.
-int	ft_free_str(t_setting *set)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	(void)set;
-	/*if (set->map->north_text)
-		free (set->map->north_text);
-	if (set->map->south_text)
-		free (set->map->south_text);
-	if (set->map->west_text)
-		free (set->map->west_text);
-	if (set->map->east_text)
-		free (set->map->east_text);
-	if (set->map->map_p)
-		free (set->map->map_p);	
-	if (set->map->rgb_c)
-		free (set->map->rgb_c);
-	if (set->map->rgb_f)
-		free (set->map->rgb_f);*/
-	return (1);
+	char	*a;
+	int		i;
+
+	i = 0;
+	if (!s)
+		return (NULL);
+	a = malloc(sizeof(char) * (len + 1));
+	if (!a)
+		return (NULL);
+	while (s[start] && len != 0)
+	{
+		a[i] = s[start];
+		i++;
+		start++;
+		len--;
+	}
+	a[i] = '\0';
+	return (a);
 }
+
+int	ft_atoi(const char *str)
+{
+	long		i;
+	long		sign;
+	long		result;
+
+	i = 0;
+	result = 0;
+	sign = 1;
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign = sign * -1;
+		i++;
+	}
+	while (str[i] >= 48 && str[i] <= 57)
+	{
+		result = (result * 10) + str[i] - 48;
+		i++;
+		if (result * sign > 2147483647)
+			return (-1);
+		if (result * sign < -2147483648)
+			return (0);
+	}
+	return (result * sign);
+}
+
+char	*ft_strdup(char *s1)
+{
+	char	*temp;
+	int		length;
+	int		i;
+
+	i = 0;
+	length = ft_strlen(s1);
+	temp = malloc(sizeof(char) * (length + 1));
+	if (!temp)
+		return (NULL);
+	while (s1 && s1[i])
+	{
+		temp[i] = s1[i];
+		i++;
+	}
+	temp[i] = 0;
+	return (temp);
+}
+
 
 

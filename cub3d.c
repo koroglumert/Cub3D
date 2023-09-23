@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:49:53 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/22 22:02:50 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/23 04:10:24 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-//kodu birleştimre where am ı
 static int	ft_take_directs(t_setting *set)
 {
-	set->player->dir_x = 0.0; //MERT: BU iki satır neden var? silinince normda çözülür.
+	set->player->dir_x = 0.0;
 	set->player->dir_y = 0.0; 
 	if (set->map->map[(int)set->player->pos_y][(int)set->player->pos_x] == 'E')
 	{
@@ -67,7 +66,6 @@ int main(int ac, char **av)
 	ft_check_xpm(set.map);
 	ft_take_directs(&set);
 	ft_take_rgb_f_c(&set);
-	//MERT: Bu kısma kadar yeni bir dosya veya check main fonksiyonu ile yönetilmeli.
 	mlx_start(&set);
 	return (0);
 }

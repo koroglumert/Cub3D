@@ -6,7 +6,7 @@
 /*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:15:30 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/22 23:38:55 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/23 04:02:37 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,6 @@ int		where_am_i(t_setting *set, char **str);
 void	mlx_start(t_setting *set);
 int		my_screen(t_setting *set);
 int		close_win(t_setting *set);
-void	paint_cloud_and_grass(t_setting *set);
 int		press_key (int	keycode, t_setting *set);
 int		release_key(int keycode, t_setting *set);
 void	ray_casting (t_setting *set);
@@ -150,8 +149,6 @@ void	ft_get_images(t_setting *set, t_player	*player, int j);
 void	check_keys(t_setting *set);
 void	ft_images_management(t_mlx *mlx, t_map *map);
 void	ft_init_mlx(t_mlx *mlx);
-
-void	go_up(t_setting *set);
 
 # define	TEXT_W 64
 # define	TEXT_H 64
@@ -212,12 +209,6 @@ mlx destroy lazım
 
 Fonksiyon isimlerinin başında ft_
 
-1080x1920 piksel için define tanımlanabilir.
-
-özel klasör içerisndeki dosyaların isimlerinin başından klasör ismi silinebilir.
-
-posx ve posy her hareketten sonra güncellenmeli.
- bu PITCH nedir?
 
 
 */
