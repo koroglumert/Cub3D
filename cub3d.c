@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:49:53 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 04:10:24 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/23 12:22:36 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int main(int ac, char **av)
 	
 	if (ac != 2)
 	{
-		printf("Wrong argument count!\n");
+		printf("Error\nWrong argument count!\n");
 		return (1);
 	}
 	ft_init(&set);

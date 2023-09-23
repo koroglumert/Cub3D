@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_xpm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 21:04:14 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/19 22:28:18 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/23 12:23:06 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ static void	control_xpm(char *str)
 	len = ft_strlen(str);
 	if (len < 4)
 	{
-		printf("wrong path\n");
+		printf("Error\nwrong path\n");
 		exit (1);
 	}
 	if (str[len - 1] != 'm' || str[len - 2] != 'p' || str[len - 3] != 'x' || str[len - 4] != '.')
 	{
-		printf("extension error '.xpm'\n");
+		printf("Error\nextension error '.xpm'\n");
 		exit (1);
 	}
 }
@@ -51,7 +51,7 @@ void	ft_check_xpm(t_map *map)
 	{
 		if (fd[i] == -1)
 		{
-			printf("textures not found\n");
+			printf("Error\ntextures not found\n");
 			free (fd);
 			exit (1);
 		}

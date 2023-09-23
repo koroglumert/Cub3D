@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_start.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:54:02 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 04:02:41 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/23 12:23:39 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_images_management(t_mlx *mlx, t_map *map)
 		&(map->east.img_w), &(map->east.img_h));
 	if (!map->north.image || !map->south.image || !map->west.image || !map->east.image)
 	{
-		printf("texture error!\n");
+		printf("Error\ntexture error!\n");
 		exit (1);
 	}
 	map->north.data = mlx_get_data_addr(map->north.image, &(map->north.bpp),

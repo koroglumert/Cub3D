@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:24:37 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/21 15:46:07 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/23 12:22:58 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	valid_char(char *str)
 			|| str[i] == 'N' || str[i] == 'W' 
 			|| str[i] == 'E' || str[i] == 'S' || str[i] == '\n'))
 		{
-			printf ("Wrong input!\n");
+			printf ("Error\nWrong input!\n");
 			return (1);
 		}
 		i++;
@@ -57,7 +57,7 @@ int	valid_char(char *str)
 	}
 	if (flag != 1)
 	{
-		printf ("Too many places to born!\n");
+		printf ("Error\nToo many places to born!\n");
 		return (1);
 	}
 	return (0);
@@ -122,7 +122,7 @@ int	valid_map(t_map *map)
 			{
 				if (check_zero(map->map, i, j, map))
 				{
-					printf("Wrong map!\n");
+					printf("Error\nWrong map!\n");
 					return(1);
 				}
 			}

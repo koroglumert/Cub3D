@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:49:21 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/20 21:44:47 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/23 12:22:48 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,13 @@ int	check_texts_rgb(t_map *map, char *av1)
 	
 	if (check_map_name(av1) == 1)
 	{
-		printf("Wrong filename!\n");
+		printf("Error\nWrong filename!\n");
 		return (1);
 	}
 	map_starter = textures(av1, map);
 	if (map_starter == 1)
 	{
-		printf("Map includes wrong, missing or extra characters!\n");
+		printf("Error\nMap includes wrong, missing or extra characters!\n");
 		return (1);
 	}
 	return (0);

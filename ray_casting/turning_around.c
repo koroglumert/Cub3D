@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   turning_around.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:10:02 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 04:08:33 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/23 12:50:07 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	turn_left(t_setting *set)
 	double		rs;
 
 	player = set->player;
-	rs = set->rot_speed;
+	rs = set->rot_speed / 2;
 	old_dir_x = set->player->dir_x;
 	old_plane_x = set->player->plane_x;
 	player->dir_x = old_dir_x * cos(rs) - player->dir_y * sin(rs);
@@ -37,7 +37,7 @@ static void	turn_right(t_setting *set)
 	double		rs;
 
 	player = set->player;
-	rs = set->rot_speed;
+	rs = set->rot_speed / 2;
 	old_dir_x = player->dir_x;
 	old_plane_x = player->plane_x;
 	player->dir_x = old_dir_x * cos(-rs) - player->dir_y * sin(-rs);

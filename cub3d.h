@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:15:30 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 04:02:37 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/23 12:51:24 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,8 +152,8 @@ void	ft_init_mlx(t_mlx *mlx);
 
 # define	TEXT_W 64
 # define	TEXT_H 64
-# define 	WIDTH	640
-# define	HEIGHT 640
+# define 	WIDTH	1920
+# define	HEIGHT 1080
 
 # define	W 13
 # define	A 0
