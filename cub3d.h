@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:15:30 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 20:27:34 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/26 04:28:25 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_img
 	int		img_w;
 }				t_img;
 
-typedef struct s_player{
+typedef struct s_rc{
 	double		dir_x;
 	double		dir_y;
 	double		speed;
@@ -65,10 +65,9 @@ typedef struct s_player{
 	double		text_pos;
 	double		text_step;
 	char		start_position;
-}				t_player;
+}				t_rc;
 
-typedef struct s_map
-{
+typedef struct s_map{
 	char			*north_text;
 	char			*south_text;
 	char			*west_text;
@@ -89,8 +88,7 @@ typedef struct s_map
 	int				img_w;
 }					t_map;
 
-typedef struct s_mlx
-{
+typedef struct s_mlx{
 	void	*mlx_init;
 	void	*mlx_img;
 	int		*mlx_img_addr;
@@ -100,11 +98,10 @@ typedef struct s_mlx
 	int		endian;
 }				t_mlx;
 
-typedef struct s_setting
-{
+typedef struct s_setting{
 	t_map		*map;
 	t_mlx		*mlx;
-	t_player	*player;
+	t_rc		*rc;
 	double		move_speed;
 	double		rot_speed;
 	int			press_w;
@@ -119,7 +116,6 @@ void	ft_init(t_setting *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_atoi(const char *str);
 char	*ft_strdup(char *s1);
-
 int		check_texts_rgb(t_map *map, char *av1);
 void	ft_check_xpm(t_map *map);
 int		take_texts(char *str, t_map *map, int i, int flg);
@@ -133,11 +129,11 @@ int		close_win(t_setting *set);
 int		press_key(int keycode, t_setting *set);
 int		release_key(int keycode, t_setting *set);
 void	ray_casting(t_setting *set);
-void	ft_get_images(t_setting *set, t_player	*player, int j);
+void	ft_get_images(t_setting *set, t_rc	*rc, int j);
 void	check_keys(t_setting *set);
 void	ft_images_management(t_mlx *mlx, t_map *map);
 void	ft_init_mlx(t_mlx *mlx);
-int		print_error(char *str);
+int		print_error(char *str, int t);
 int		check_if_them_full(t_map *map);
 int		while_for_space(char *str, int *i);
 void	fill_sing_pnt(char *add, t_map *map);

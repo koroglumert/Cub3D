@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:18:48 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 20:27:48 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/26 12:07:14 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@ void	ft_init(t_setting *set)
 {
 	set->map = malloc(sizeof(t_map));
 	set->mlx = malloc(sizeof(t_mlx));
-	set->player = malloc(sizeof(t_player));
+	set->rc = malloc(sizeof(t_rc));
 	set->map->map_p = NULL;
 	set->map->north_text = NULL;
 	set->map->south_text = NULL;
 	set->map->west_text = NULL;
 	set->map->east_text = NULL;
-	set->map->map_p = NULL;
 	set->map->rgb_c = malloc(sizeof(int) * 3);
 	set->map->rgb_c[0] = -1;
 	set->map->rgb_c[1] = -1;
@@ -38,7 +37,8 @@ void	ft_init(t_setting *set)
 	set->direct_right = 0;
 	set->direct_left = 0;
 	set->move_speed = 0.05;
-	set->rot_speed = 0.05;
+	set->rot_speed = 0.03;
+	set->map->rgb_control = 0;
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -112,8 +112,10 @@ char	*ft_strdup(char *s1)
 	return (temp);
 }
 
-int	print_error(char *str)
+int	print_error(char *str, int t)
 {
+	if (t > 2)
+		close (t);
 	printf("Error\n%s\n", str);
 	return (1);
 }

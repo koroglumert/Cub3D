@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:04:10 by mkoroglu          #+#    #+#             */
-/*   Updated: 2023/09/23 20:09:19 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:58:18 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,10 @@ int	while_for_space(char *str, int *i)
 
 void	fill_sing_pnt(char *add, t_map *map)
 {
-	char	*tmp;
-
 	if (map->map_p == NULL)
 		map->map_p = ft_strdup(add);
 	else
-	{
-		tmp = ft_strdup(map->map_p);
-		free (map->map_p);
-		map->map_p = ft_strjoin(tmp, add);
-	}
+		map->map_p = ft_strjoin(map->map_p, add);
 }
 
 void	ft_dp_2(t_map *map, int length)

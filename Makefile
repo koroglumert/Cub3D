@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+         #
+#    By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 19:51:14 by havyilma          #+#    #+#              #
-#    Updated: 2023/09/23 20:27:39 by mkoroglu         ###   ########.fr        #
+#    Updated: 2023/09/26 00:32:03 by havyilma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,16 +18,16 @@ GNL = ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c
 OBJS = $(SRCS:.c=.o)
 GNLOBJS = $(GNL:.c=.o)
 MLX = minilibx/mlx.a
-NAME = cub3d
+NAME = cub3D
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I./minilibx
-LFLAGS = -framework AppKit -framework OpenGL -L./minilibx -lmlx
+LFLAGS = -framework AppKit -framework OpenGL -L./minilibx -lmlx 
 RM = rm -rf
 
 all : $(MLX) $(NAME) $(OBJS)
 
 $(MLX) :
-	make -C minilibx
+#	make -C minilibx
 
 $(NAME) : $(OBJS) $(GNLOBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(GNLOBJS) $(LFLAGS) -o $(NAME)
@@ -42,7 +42,7 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 	@$(RM) ./get_next_line/*.o
-	@$(RM) ./minilibx/*.o
+#	@$(RM) ./minilibx/*.o
 
 re : fclean all
 

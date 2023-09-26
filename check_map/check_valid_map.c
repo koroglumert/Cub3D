@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:24:37 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 19:58:10 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/26 04:26:22 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	where_am_i(t_setting *set, char **str)
 			if (str[i][j] == 'N' || str[i][j] == 'S'
 				|| str[i][j] == 'W' || str[i][j] == 'E')
 			{
-				set->player->pos_y = (double)i;
-				set->player->pos_x = (double)j;
-				set->player->start_position = str[i][j];
+				set->rc->pos_y = (double)i;
+				set->rc->pos_x = (double)j;
+				set->rc->start_position = str[i][j];
 				return (0);
 			}
 		}
@@ -58,7 +58,7 @@ int	valid_char(char *str)
 	}
 	if (flag != 1)
 	{
-		printf ("Error\nToo many places to born!\n");
+		printf ("Error\nplayer doesn't know where to born!\n");
 		return (1);
 	}
 	return (0);
@@ -111,7 +111,7 @@ int	valid_map(t_map *map)
 
 	i = 0;
 	j = 0;
-	while (i < map->map_length - 1)
+	while (i < map->map_length)
 	{
 		j = 0;
 		while (map->map[i][j])
@@ -120,7 +120,7 @@ int	valid_map(t_map *map)
 			{
 				if (check_zero(map->map, i, j, map))
 				{
-					printf("Error\nWrong map!\n");
+					printf("Error\nwrong map\n");
 					return (1);
 				}
 			}
