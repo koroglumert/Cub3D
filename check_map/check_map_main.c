@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:49:21 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/27 16:59:54 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/27 18:36:50 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	ft_check_next(int fd)
 int	ft_take_map(t_map *map, int fd, int i)
 {
 	char	*tmp;
-	tmp = get_next_line(fd);
 
+	tmp = get_next_line(fd);
 	while (while_for_space (tmp, &i) == 0)
 	{
 		if (tmp)
@@ -81,10 +81,9 @@ int	textures(char *path, t_map *map)
 			take_texts(tmp, map, i, 0);
 		if (tmp)
 			free(tmp);
-		tmp = get_next_line(fd);
+		if (check_if_them_full(map) == 1)
+			tmp = get_next_line(fd);
 	}
-	if (tmp)
-		free (tmp);
 	if (check_if_them_full(map) == 0)
 		return (ft_take_map(map, fd, i));
 	return (1);
@@ -107,7 +106,7 @@ int	check_map_name(char *av1)
 		return (1);
 	i = len;
 	if (!(av1[i] == '.' && av1[i + 1] == 'c'
-			&& av1[i + 2] == 'u' && av1[i + 3] == 'b'))
+			&& av1[i + 2] == 'u' && av1[i + 3] == 'b') || av1[i - 1] == '/')
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:21:52 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/27 17:56:03 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/27 18:25:18 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,11 @@ int	fill_intpointr(char *str, int *i, int type, t_map *map)
 
 int	take_texts(char *str, t_map *map, int i, int flg)
 {
-	if (str[i] && str[i + 1] && str[i] == 'N' && str[i + 1] == 'O' && map->north_text == NULL)
+	if (str[i] && str[i + 1] && str[i] == 'N'
+		&& str[i + 1] == 'O' && map->north_text == NULL)
 		flg = fill_them(str, &i, 'N', map);
-	else if (str[i] && str[i + 1] && str[i] == 'S' && str[i + 1] == 'O' && map->south_text == NULL)
+	else if (str[i] && str[i + 1] && str[i] == 'S'
+		&& str[i + 1] == 'O' && map->south_text == NULL)
 		flg = fill_them(str, &i, 'S', map);
 	else if (str[i] && str[i + 1] && str[i] == 'W'
 		&& str[i + 1] == 'E' && map->west_text == NULL)

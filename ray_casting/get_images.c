@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:01:58 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/26 04:23:55 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/27 18:06:30 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ void	image_put_pixel(t_img *img, int x, t_setting *set)
 t_img	get_side_image(t_setting *set)
 {
 	if (set->rc->face_of_cube == 'x' && set->rc->raydir_x > 0)
-		return (set->map->south);
-	else if (set->rc->face_of_cube == 'x' && set->rc->raydir_x < 0)
-		return (set->map->north);
-	else if (set->rc->face_of_cube == 'y' && set->rc->raydir_y > 0)
 		return (set->map->west);
-	else
+	else if (set->rc->face_of_cube == 'x' && set->rc->raydir_x < 0)
 		return (set->map->east);
+	else if (set->rc->face_of_cube == 'y' && set->rc->raydir_y > 0)
+		return (set->map->south);
+	else
+		return (set->map->north);
 }
 
 void	ft_get_images(t_setting *set, t_rc	*rc, int x)

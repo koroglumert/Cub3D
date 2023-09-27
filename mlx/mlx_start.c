@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_start.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:54:02 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/23 16:59:18 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/09/27 18:22:57 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	ft_images_management(t_mlx *mlx, t_map *map)
 void	ft_init_mlx(t_mlx *mlx)
 {
 	mlx->mlx_init = mlx_init();
-	mlx->mlx_window = mlx_new_window(mlx->mlx_init, WIDTH, HEIGHT, "cub3d");
+	mlx->mlx_window = mlx_new_window(mlx->mlx_init, WIDTH, HEIGHT, "cub3D");
 	mlx->mlx_img = mlx_new_image(mlx->mlx_init, WIDTH, HEIGHT);
 	mlx->mlx_img_addr = (int *)mlx_get_data_addr(mlx->mlx_img,
 			&mlx->bits_per_pixel, &mlx->size_line, &mlx->endian);
