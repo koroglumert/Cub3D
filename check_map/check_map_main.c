@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:49:21 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/26 11:57:29 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:59:54 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ void	ft_check_next(int fd)
 int	ft_take_map(t_map *map, int fd, int i)
 {
 	char	*tmp;
-
 	tmp = get_next_line(fd);
-	if (tmp == NULL)
-		return (1);
+
 	while (while_for_space (tmp, &i) == 0)
 	{
 		if (tmp)
 			free(tmp);
 		tmp = get_next_line(fd);
 	}
+	if (!tmp)
+		return (print_error("wrong map", fd));
 	while (tmp)
 	{
 		if (while_for_space (tmp, &i) == 1)

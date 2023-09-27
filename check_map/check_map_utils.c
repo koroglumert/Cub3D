@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:04:10 by mkoroglu          #+#    #+#             */
-/*   Updated: 2023/09/26 11:58:18 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:54:45 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ int	check_if_them_full(t_map *map)
 int	while_for_space(char *str, int *i)
 {
 	*i = 0;
+
+	if (!str)
+		return (1);
 	while (str[*i] == ' ' || (str[*i] >= 9 && str[*i] <= 13))
 		*i += 1;
 	if (str[*i])
@@ -63,6 +66,8 @@ void	ft_dp_2(t_map *map, int length)
 
 	i = 0;
 	j = 0;
+	if (length < 3)
+		exit (print_error("wrong map", 0));
 	while (i < length)
 	{
 		start = j;

@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:21:52 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/26 12:04:00 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/27 17:56:03 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ int	fill_intpointr(char *str, int *i, int type, t_map *map)
 			fill_c(map, i, rgb, str);
 		else if (type == 'F')
 			fill_f(map, i, rgb, str);
+		while (str[*i] == 32)
+			(*i)++;
 		if (rgb != 2 && str[*i] == ',')
 			(*i)++;
 		rgb += 1;
@@ -109,19 +111,19 @@ int	fill_intpointr(char *str, int *i, int type, t_map *map)
 
 int	take_texts(char *str, t_map *map, int i, int flg)
 {
-	if (str[i] && str[i + 1] && str[i] == 'N' && str[i + 1] == 'O')
+	if (str[i] && str[i + 1] && str[i] == 'N' && str[i + 1] == 'O' && map->north_text == NULL)
 		flg = fill_them(str, &i, 'N', map);
-	else if (str[i] && str[i + 1] && str[i] == 'S' && str[i + 1] == 'O')
+	else if (str[i] && str[i + 1] && str[i] == 'S' && str[i + 1] == 'O' && map->south_text == NULL)
 		flg = fill_them(str, &i, 'S', map);
 	else if (str[i] && str[i + 1] && str[i] == 'W'
-		&& str[i + 1] == 'E')
+		&& str[i + 1] == 'E' && map->west_text == NULL)
 		flg = fill_them(str, &i, 'W', map);
 	else if (str[i] && str[i + 1] && str[i] == 'E'
-		&& str[i + 1] == 'A')
+		&& str[i + 1] == 'A' && map->east_text == NULL)
 		flg = fill_them(str, &i, 'E', map);
-	else if (str[i] && str[i] == 'F')
+	else if (str[i] && str[i] == 'F' && map->rgb_f[0] == -1)
 		flg = fill_intpointr(str, &i, 'F', map);
-	else if (str[i] && str[i] == 'C')
+	else if (str[i] && str[i] == 'C' && map->rgb_c[0] == -1)
 		flg = fill_intpointr(str, &i, 'C', map);
 	else if (str[i] == '\n')
 		return (0);

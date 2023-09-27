@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:24:37 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/26 04:26:22 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:42:21 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,9 @@ int	valid_map(t_map *map)
 		j = 0;
 		while (map->map[i][j])
 		{
-			if (map->map[i][j] == 48)
+			if (map->map[i][j] == 48 || map->map[i][j] == 'N' 
+				|| map->map[i][j] == 'S' || map->map[i][j] == 'W'
+				|| map->map[i][j] == 'E')
 			{
 				if (check_zero(map->map, i, j, map))
 				{
