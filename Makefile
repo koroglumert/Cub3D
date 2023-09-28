@@ -1,19 +1,7 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/28 19:51:14 by havyilma          #+#    #+#              #
-#    Updated: 2023/09/26 00:32:03 by havyilma         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 SRCS =	./check_map/check_map_main.c ./check_map/check_map_textures.c ./check_map/check_valid_map.c ./check_map/check_xpm.c ./check_map/check_map_utils.c \
 		./mlx/mlx_keys.c ./mlx/mlx_start.c\
 		./ray_casting/ray_casting.c ./ray_casting/get_images.c ./ray_casting/turning_around.c \
-		utils.c cub3d.c
+		utils.c cub3d.c mert.c
 GNL = ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c
 OBJS = $(SRCS:.c=.o)
 GNLOBJS = $(GNL:.c=.o)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:49:53 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/26 12:02:23 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/09/28 02:30:38 by mkoroglu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	main(int ac, char **av)
 		|| valid_map(set.map) || where_am_i(&set, set.map->map))
 		return (1);
 	ft_distributor(&set);
+	ft_check_double_map(set.map->map);
 	mlx_start(&set);
 	return (0);
 }
