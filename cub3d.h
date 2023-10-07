@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:15:30 by havyilma          #+#    #+#             */
-/*   Updated: 2023/10/07 17:59:46 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/10/07 20:02:12 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ void	ft_dp_2(t_map *map, int length);
 void	ft_check_double_map(char **str);
 char	**ft_copy_double_array(char **str);
 void	ft_free_double_array(char **str);
+int		return_value(char *str, int i, int rgb);
 
 # define TEXT_W 64
 # define TEXT_H 64

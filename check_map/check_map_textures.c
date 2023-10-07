@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:21:52 by havyilma          #+#    #+#             */
-/*   Updated: 2023/10/07 17:35:21 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/10/07 20:01:49 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,7 @@ int	fill_intpointr(char *str, int *i, int type, t_map *map)
 	}
 	while (str[*i] == 32)
 		(*i)++;
-	if (rgb != 3 || (str[*i] != '\0' && str[*i] != '\n'))
-		return (1);
-	return (0);
+	return (return_value(str, *i, rgb));
 }
 
 int	take_texts(char *str, t_map *map, int i, int flg)

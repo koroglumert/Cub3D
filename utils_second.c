@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:56:14 by havyilma          #+#    #+#             */
-/*   Updated: 2023/10/07 18:05:01 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/10/07 20:02:27 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@ void	ft_free_double_array(char **str)
 		free(str[i]);
 		i++;
 	}
+	free (str);
 }
 
 char	**ft_copy_double_array(char **str)
 {
 	char	**new;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (str[i])
@@ -50,4 +51,11 @@ char	**ft_copy_double_array(char **str)
 		i++;
 	}
 	return (new);
+}
+
+int	return_value(char *str, int i, int rgb)
+{
+	if (rgb != 3 || (str[i] != '\0' && str[i] != '\n'))
+		return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:18:48 by havyilma          #+#    #+#             */
-/*   Updated: 2023/10/07 18:00:09 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/10/07 19:16:59 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_init(t_setting *set)
 	set->direct_right = 0;
 	set->direct_left = 0;
 	set->move_speed = 0.05;
-	set->rot_speed = 0.03;
+	set->rot_speed = 0.04;
 	set->map->rgb_control = 0;
 }
 

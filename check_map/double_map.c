@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:56:52 by havyilma          #+#    #+#             */
-/*   Updated: 2023/10/07 17:59:26 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/10/07 19:59:38 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ void	ft_recursive_double_map(char **str, int i, int j)
 	ft_recursive_double_map(str, i, j + 1);
 	ft_recursive_double_map(str, i + 1, j + 1);
 }
-
-
 
 void	ft_check_double_map(char **str)
 {
