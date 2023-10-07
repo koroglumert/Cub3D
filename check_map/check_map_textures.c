@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:21:52 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/27 18:25:18 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/10/07 17:35:21 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	fill_c(t_map *map, int *i, int rgb, char *str)
 	finish = *i;
 	while (str[finish] >= 48 && str[finish] <= 57)
 		finish++;
-	if (*i == finish && rgb == 0)
+	if (*i == finish)
 		return (1);
 	number = ft_substr(str, *i, finish - *i);
 	map->rgb_c[rgb] = ft_atoi(number);
@@ -69,7 +69,7 @@ int	fill_f(t_map *map, int *i, int rgb, char *str)
 	finish = *i;
 	while (str[finish] >= 48 && str[finish] <= 57)
 		finish++;
-	if (*i == finish && rgb == 0)
+	if (*i == finish)
 		return (1);
 	number = ft_substr(str, *i, finish - *i);
 	map->rgb_f[rgb] = ft_atoi(number);
@@ -100,6 +100,8 @@ int	fill_intpointr(char *str, int *i, int type, t_map *map)
 			(*i)++;
 		if (rgb != 2 && str[*i] == ',')
 			(*i)++;
+		else if (rgb != 2 && str[*i] != ',')
+			exit(print_error("RGB wrong", 0));
 		rgb += 1;
 	}
 	while (str[*i] == 32)

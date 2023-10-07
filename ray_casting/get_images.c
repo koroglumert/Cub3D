@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:01:58 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/27 18:06:30 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/10/07 18:23:29 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ t_img	get_side_image(t_setting *set)
 	else if (set->rc->face_of_cube == 'x' && set->rc->raydir_x < 0)
 		return (set->map->east);
 	else if (set->rc->face_of_cube == 'y' && set->rc->raydir_y > 0)
-		return (set->map->south);
-	else
 		return (set->map->north);
+	else
+		return (set->map->south);
 }
 
 void	ft_get_images(t_setting *set, t_rc	*rc, int x)

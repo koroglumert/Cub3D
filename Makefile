@@ -1,7 +1,7 @@
-SRCS =	./check_map/check_map_main.c ./check_map/check_map_textures.c ./check_map/check_valid_map.c ./check_map/check_xpm.c ./check_map/check_map_utils.c \
+SRCS =	./check_map/check_map_main.c ./check_map/check_map_textures.c ./check_map/check_valid_map.c ./check_map/check_xpm.c ./check_map/check_map_utils.c ./check_map/double_map.c\
 		./mlx/mlx_keys.c ./mlx/mlx_start.c\
 		./ray_casting/ray_casting.c ./ray_casting/get_images.c ./ray_casting/turning_around.c \
-		utils.c cub3d.c mert.c
+		utils.c utils_second.c cub3d.c 
 GNL = ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c
 OBJS = $(SRCS:.c=.o)
 GNLOBJS = $(GNL:.c=.o)
@@ -15,7 +15,7 @@ RM = rm -rf
 all : $(MLX) $(NAME) $(OBJS)
 
 $(MLX) :
-#	make -C minilibx
+	make -C minilibx
 
 $(NAME) : $(OBJS) $(GNLOBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(GNLOBJS) $(LFLAGS) -o $(NAME)
@@ -30,7 +30,7 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 	@$(RM) ./get_next_line/*.o
-#	@$(RM) ./minilibx/*.o
+	@$(RM) ./minilibx/*.o
 
 re : fclean all
 

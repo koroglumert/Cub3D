@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 22:24:37 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/27 18:25:47 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/10/07 18:08:35 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	where_am_i(t_setting *set, char **str)
 			if (str[i][j] == 'N' || str[i][j] == 'S'
 				|| str[i][j] == 'W' || str[i][j] == 'E')
 			{
-				set->rc->pos_y = (double)i;
-				set->rc->pos_x = (double)j;
+				set->rc->pos_y = (double)i + 0.5;
+				set->rc->pos_x = (double)j + 0.5;
 				set->rc->start_position = str[i][j];
 				return (0);
 			}

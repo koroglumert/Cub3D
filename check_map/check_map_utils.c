@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 17:04:10 by mkoroglu          #+#    #+#             */
-/*   Updated: 2023/09/27 18:25:30 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/10/07 18:14:27 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_rgb_valid(int *c, int *f)
 	i = 0;
 	while (i <= 2)
 	{
-		if (!((c[i] >= 0 && c[i] <= 255) && (f[i] >= 0 && f[i] <= 255)))
+		if (!((c[i] >= 0 && c[i] <= 255) || !(f[i] >= 0 && f[i] <= 255)))
 			return (1);
 		i++;
 	}
@@ -66,7 +66,7 @@ void	ft_dp_2(t_map *map, int length)
 	i = 0;
 	j = 0;
 	if (length < 3)
-		exit (print_error("wrong map", 0));
+		exit (print_error("wrong map !!!", 0));
 	while (i < length)
 	{
 		start = j;

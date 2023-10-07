@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkoroglu <mkoroglu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:15:30 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/28 01:31:24 by mkoroglu         ###   ########.fr       */
+/*   Updated: 2023/10/07 17:59:46 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,8 @@ int		while_for_space(char *str, int *i);
 void	fill_sing_pnt(char *add, t_map *map);
 void	ft_dp_2(t_map *map, int length);
 void	ft_check_double_map(char **str);
+char	**ft_copy_double_array(char **str);
+void	ft_free_double_array(char **str);
 
 # define TEXT_W 64
 # define TEXT_H 64

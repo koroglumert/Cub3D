@@ -6,7 +6,7 @@
 /*   By: havyilma <havyilma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:49:21 by havyilma          #+#    #+#             */
-/*   Updated: 2023/09/27 18:36:50 by havyilma         ###   ########.fr       */
+/*   Updated: 2023/10/07 18:14:18 by havyilma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_take_map(t_map *map, int fd, int i)
 		tmp = get_next_line(fd);
 	}
 	if (!tmp)
-		return (print_error("wrong map", fd));
+		return (print_error("wrong map!!", fd));
 	while (tmp)
 	{
 		if (while_for_space (tmp, &i) == 1)
@@ -117,5 +117,6 @@ int	check_texts_rgb(t_map *map, char *av1)
 		exit(print_error("Wrong filename!", 0));
 	if (textures(av1, map))
 		exit(print_error("Wrong map!", 0));
+
 	return (0);
 }
